@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import RouteLogin from "./components/RouteLogin";
-import { Route, Link } from 'react-router-dom';
+import { Route, Link } from "react-router-dom";
 import TravelInfo from "./components/travelInfo/TravelInfo";
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
