@@ -1,16 +1,34 @@
 import React from "react";
+import axios from "axios";
 
-const Tourists = props => {
-  return (
-    <div>
-      <p>Location: {props.location}</p>
-      <p>Quantity: {props.quantity}</p>
-      <p>Units: {props.units}</p>
-      <p>Type of Trip: {props.trip_type}</p>
-      <p>Type of Service: {props.service_type}</p>
-    </div>
-  );
-};
+class Tourists extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      location: "",
+      quantity: "",
+      units: "",
+      trip_type: "",
+      service_type: "",
+      user_id: ""
+    };
+  }
+
+  componentDidMount() {
+    axios.get();
+  }
+  render() {
+    return (
+      <div>
+        <p>Location: {this.state.location}</p>
+        <p>Quantity: {this.state.quantity}</p>
+        <p>Units: {this.state.units}</p>
+        <p>Type of Trip: {this.state.trip_type}</p>
+        <p>Type of Service: {this.state.service_type}</p>
+      </div>
+    );
+  }
+}
 
 export default Tourists;
 
