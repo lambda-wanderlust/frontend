@@ -14,10 +14,11 @@ class TravelInfo extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('https://lambda-wanderlust-backend.herokuapp.com/')
+        axios
+            .get('https://lambda-wanderlust-backend.herokuapp.com/api/trips')
             .then(res => {
                 console.log(res)
-                this.SetState({ trips: res.trips })
+                // this.SetState({ trips: res })
             })
             .catch(err => {
                 console.log(err)
@@ -35,7 +36,7 @@ class TravelInfo extends React.Component {
                     )
                 })}
                 <Route path="/guides/createexp" component={CreateExp} />
-                <Route path="/guides/updateexp" component={UpdateExp} />
+                <Route path="/guides/updateexp/:id" component={UpdateExp} />
             </div>
         );
     }
