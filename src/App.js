@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import RouteLogin from './components/RouteLogin';
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
-        <h1>Test</h1>
+        <RouteLogin />
       </div>
     );
   }
 }
 
 export default App;
-
-P1k9RXiiUc6da730ovJC9PDd
