@@ -9,6 +9,7 @@ const RouteLogin = props => {
       <LoginForm />
       <LoginButton loginButtonText="Tourist" />
       <LoginButton loginButtonText="Guide" />
+      <Link to="">Create New Account</Link>
 
     </div>
   )
