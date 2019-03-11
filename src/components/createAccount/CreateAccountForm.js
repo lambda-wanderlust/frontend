@@ -5,7 +5,7 @@ class CreateAccountForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'test',
+      username: '',
       password: '',
       name: '',
       role: '',
@@ -25,17 +25,21 @@ class CreateAccountForm extends React.Component {
   onSubmit = e => {
     e.preventDefault();
     const newUser = {
-      ...this.state.newUser,
+      username: this.state.username,
+      password: this.state.password,
+      name: this.state.name,
+      email: this.state.email,
+      phone: this.state.phone,
       role: this.state.guide === true ? "guide" : "user"
     }
     console.log(newUser);
-    // axios.post('https://lambda-wanderlust-backend.herokuapp.com/', this.state.newUser)
-    // .then(res => {
-
-    // })
-    // .catch(err => {
-    //   console.log(err);
-    // })
+    axios.post('https://lambda-wanderlust-backend.herokuapp.com/api/users/', newUser)
+    .then(res => {
+      console.log(res.data);
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }
 
   render() {
