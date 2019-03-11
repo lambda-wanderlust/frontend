@@ -1,7 +1,8 @@
 import React from 'react';
 import LoginButton from './LoginButton';
 import LoginForm from './LoginForm';
-import CreateAccountForm from './createAccount/CreateAccountForm';
+// import CreateAccountForm from './createAccount/CreateAccountForm';
+import { Link } from 'react-router-dom';
 
 const RouteLogin = props => {
   return (
@@ -10,8 +11,7 @@ const RouteLogin = props => {
       <LoginForm />
       <LoginButton loginButtonText="Tourist" />
       <LoginButton loginButtonText="Guide" />
-      {/* <Link to="">Create New Account</Link> */}
-      <CreateAccountForm />
+      <Link to="/create-user-form">Create New Account</Link>
     </div>
   )
 }
