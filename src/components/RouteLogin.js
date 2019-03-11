@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginButton from './LoginButton';
 import LoginForm from './LoginForm';
+import CreateAccountForm from './createAccount/CreateAccountForm';
 
 const RouteLogin = props => {
   return (
@@ -9,8 +10,8 @@ const RouteLogin = props => {
       <LoginForm />
       <LoginButton loginButtonText="Tourist" />
       <LoginButton loginButtonText="Guide" />
-      <Link to="">Create New Account</Link>
-
+      {/* <Link to="">Create New Account</Link> */}
+      <CreateAccountForm />
     </div>
   )
 }

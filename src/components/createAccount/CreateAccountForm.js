@@ -5,23 +5,30 @@ class CreateAccountForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      newUser: {
-        username: '',
-        password: '',
-        name: '',
-        role: '',
-        email: '',
-        phone: '',
-      }
+      username: 'test',
+      password: '',
+      name: '',
+      role: '',
+      email: '',
+      phone: '',
+      guide: false,
     }
   }
 
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value })
+    this.setState({ [e.target.name]: e.target.value });
+  }
+  handleCheckBoxChange = e => {
+    this.setState(prevState => ({...prevState, guide: !this.state.guide}))
   }
 
   onSubmit = e => {
     e.preventDefault();
+    const newUser = {
+      ...this.state.newUser,
+      role: this.state.guide === true ? "guide" : "user"
+    }
+    console.log(newUser);
     // axios.post('https://lambda-wanderlust-backend.herokuapp.com/', this.state.newUser)
     // .then(res => {
 
@@ -36,58 +43,63 @@ class CreateAccountForm extends React.Component {
     return (
       <form onSubmit={this.onSubmit}>
 
-        <label>Username</label>
-        <input
-          type="text"
-          placeholder='Username...'
-          name='username'
-          value={this.state.username}
-          onChange={this.handleChange}
-          required
-        />
+        <label>Username
+          <input
+            type="text"
+            placeholder='Username...'
+            name='username'
+            value={this.state.username}
+            onChange={this.handleChange}
+            required
+          />
+        </label>
 
-        <label>Password</label>
-        <input
-          type="password"
-          placeholder='Password'
-          name="password"
-          value={this.state.password}
-          onChange={this.handleChange}
-          required
-        />
-        
-        <label>Name</label>
-        <input
-          type="name"
-          placeholder='John Smyth'
-          name="name"
-          value={this.state.name}
-          onChange={this.handleChange}
-          required
-        />
+        <label>Password
+          <input
+            type="password"
+            placeholder='Password'
+            name="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+            required
+          />
+        </label>
 
-        <label>Email</label>
-        <input
-          type="email"
-          placeholder='email@example.com'
-          name="name"
-          value={this.state.email}
-          onChange={this.handleChange}
-          required
-        />
+        <label>Name
+          <input
+            type="name"
+            placeholder='John Smyth'
+            name="name"
+            value={this.state.name}
+            onChange={this.handleChange}
+            required
+          />
+        </label>
 
-        <label htmlFor="phone">Phone</label>
-        <input
-          type="phone"
-          placeholder='email@example.com'
-          name="name"
-          value={this.state.phone}
-          onChange={this.handleChange}
-          required
-        />
+        <label>Email
+          <input
+            type="email"
+            placeholder='email@example.com'
+            name="email"
+            value={this.state.email}
+            onChange={this.handleChange}
+            required
+          />
+        </label>
+
+        <label>Phone
+          <input
+            type="phone"
+            placeholder='email@example.com'
+            name="phone"
+            value={this.state.phone}
+            onChange={this.handleChange}
+            required
+          />
+        </label>
 
         <label>Are you a guide?
-          <input type="checkbox"/>
+          <input type="checkbox" name="guide" onChange={this.handleCheckBoxChange} value={this.state.guide} />
         </label>
 
         <button>Submit</button>
