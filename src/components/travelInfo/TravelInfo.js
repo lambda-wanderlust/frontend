@@ -3,7 +3,7 @@ import axios from "axios";
 import { Route, Link } from "react-router-dom";
 import TravelCard from "./TravelCard";
 import CreateExp from "./CreateExp";
-import UpdateExp from "./UpdateExp";
+import SingleTripCard from "./SingleTripCard";
 
 class TravelInfo extends React.Component {
     constructor(props) {
@@ -28,14 +28,17 @@ class TravelInfo extends React.Component {
     render() {
         return (
             <div>
-                
-                {this.state.trips.map(trip => {
-                    return <TravelCard key={trip.id} trip={trip} />;
-                })}
-                <Route path="/guides/createexp" component={CreateExp} />
-                <Route path="/guides/updateexp/:id" component={UpdateExp} />
-                {/*TESTING TO BE REMOVED*/}
-                <CreateExp />
+                <Route exact path="/travel-info" render={props => {
+                    
+                    return this.state.trips.map(trip => {
+                        return <TravelCard key={trip.id} trip={trip} />;
+                    })
+                }}
+                />
+                <Route path="/travel-info/experiences/:id" render={props => {
+                    return <SingleTripCard {...props} trips={this.state.trips} />
+                }} 
+                />
             </div>
         );
     }
