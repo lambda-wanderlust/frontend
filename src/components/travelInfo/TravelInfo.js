@@ -1,42 +1,40 @@
 import React from "react";
 import axios from "axios";
-import { Route, Link } from 'react-router-dom';
+import { Route, Link } from "react-router-dom";
 import TravelCard from "./TravelCard";
-import CreateExp from './CreateExp';
-import UpdateExp from './UpdateExp';
+import CreateExp from "./CreateExp";
 
 class TravelInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            trips: [],
+            trips: []
         };
     }
 
     componentDidMount() {
         axios
-            .get('https://lambda-wanderlust-backend.herokuapp.com/api/trips')
+            .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips")
             .then(res => {
-                console.log(res)
-                // this.SetState({ trips: res })
+                console.log(res.data);
+                this.setState({ trips: res.data });
             })
             .catch(err => {
-                console.log(err)
-            })
+                console.log(err);
+            });
     }
-  
+
     render() {
         return (
             <div>
+                
                 {this.state.trips.map(trip => {
-                    return (
-                        <TravelCard
-                            trip={trip}
-                        />
-                    )
+                    return <TravelCard key={trip.id} trip={trip} />;
                 })}
                 <Route path="/guides/createexp" component={CreateExp} />
                 <Route path="/guides/updateexp/:id" component={UpdateExp} />
+                {/*TESTING TO BE REMOVED*/}
+                <CreateExp />
             </div>
         );
     }
