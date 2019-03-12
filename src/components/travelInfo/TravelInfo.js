@@ -26,8 +26,10 @@ class TravelInfo extends React.Component {
   }
 
   render() {
+    console.log(this.props.props.guide);
     return (
       <div>
+        {this.props.props.guide ? <button>Create Expereince</button> : null}
         <Route
           exact
           path="/travel-info"
