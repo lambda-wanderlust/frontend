@@ -35,8 +35,12 @@ class CreateAccountForm extends React.Component {
     }
     axios.post('https://lambda-wanderlust-backend.herokuapp.com/api/accounts/register', newUser)
     .then(res => {
-      console.log(res.data.token);
+      const guide = res.data.role === 'tourist' ? false : true;
+      const id = res.data.id;
+      console.log(res.data);
+      this.props.userLogin(guide, id);
       localStorage.setItem('token', res.data.token);
+
       this.props.history.push('/travel-info');
     })
     .catch(err => {
