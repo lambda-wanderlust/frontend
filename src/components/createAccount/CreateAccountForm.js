@@ -30,12 +30,12 @@ class CreateAccountForm extends React.Component {
       name: this.state.name,
       email: this.state.email,
       phone: this.state.phone,
-      role: this.state.guide === true ? "guide" : "user"
+      role: this.state.guide === true ? "guide" : "user",
     }
-    console.log(newUser);
-    axios.post('https://lambda-wanderlust-backend.herokuapp.com/api/users/', newUser)
+    console.log('newUser: ', newUser);
+    axios.post('https://lambda-wanderlust-backend.herokuapp.com/api/accounts/register', newUser)
     .then(res => {
-      console.log(res.data);
+      console.log('res.data: ', res.data);
     })
     .catch(err => {
       console.log(err);
