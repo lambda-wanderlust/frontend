@@ -16,7 +16,6 @@ class TravelInfo extends React.Component {
         axios
             .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips")
             .then(res => {
-                console.log(res.data);
                 this.setState({ trips: res.data });
             })
             .catch(err => {

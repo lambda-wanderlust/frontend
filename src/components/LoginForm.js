@@ -25,7 +25,8 @@ class LoginForm extends React.Component {
     console.log('user: ', user);
     axios.post('https://lambda-wanderlust-backend.herokuapp.com/api/accounts/login', user)
     .then(res => {
-      console.log(this.props);
+      console.log(res.data.token);
+      localStorage.setItem('token', res.data.token);
       this.props.history.push('/travel-info');
       })
       .catch(err => {
