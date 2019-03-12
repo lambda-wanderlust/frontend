@@ -5,6 +5,7 @@ import { Route } from "react-router-dom";
 import TravelInfo from "./components/travelInfo/TravelInfo";
 
 import CreateAccountForm from "./components/createAccount/CreateAccountForm";
+import CreateExp from "./components/travelInfo/CreateExp";
 
 class App extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class App extends Component {
         <Route exact path="/" render={(props) => { return <RouteLogin props={this.state} userLogin={this.userLogin}/> }} />
         <Route path="/create-user-form" render={(props) => { return <CreateAccountForm props={this.state} userLogin={this.userLogin} /> }} />
         <Route path="/travel-info" render={(props) => { return <TravelInfo props={this.state} /> }} />
+        <Route path="/travel-info/create-exp" component={CreateExp} />
       </div>
     );
   }
