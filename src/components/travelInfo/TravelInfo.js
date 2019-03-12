@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import TravelCard from "./TravelCard";
 import CreateExp from "./CreateExp";
 
@@ -28,11 +28,10 @@ class TravelInfo extends React.Component {
     render() {
         return (
             <div>
+                
                 {this.state.trips.map(trip => {
                     return <TravelCard key={trip.id} trip={trip} />;
                 })}
-        
-                <Route path="/guides/updateexp/:id" component={CreateExp} />
                 {/*TESTING TO BE REMOVED*/}
                 <CreateExp />
             </div>
