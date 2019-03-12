@@ -3,6 +3,7 @@ import axios from "axios";
 import { Route, Link } from "react-router-dom";
 import TravelCard from "./TravelCard";
 import CreateExp from "./CreateExp";
+import UpdateExp from "./UpdateExp";
 
 class TravelInfo extends React.Component {
     constructor(props) {
