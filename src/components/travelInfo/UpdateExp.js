@@ -38,11 +38,39 @@ class CreateExp extends React.Component {
         //.catch(err => console.log(err));
     };
 
+    handleUpdate = (e, id) => {
+    let updatedTrip = this.state;
+    console.log(this.state)
+    e.preventDefault();
+    axios
+        .put(
+        "https://lambda-wanderlust-backend.herokuapp.com/api/trips",
+        updatedTrip
+        )
+        .then(res => {
+            console.log(res)
+        
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    };
+
+    handleDelete = (e, id) => {
+        let deletePost = this.state;
+        e.preventDefault();
+        axios
+            .delete("https://lambda-wanderlust-backend.herokuapp.com/api/trips",
+            deletePost
+            )
+            .then(res => res.data)
+            .catch(err => console.log(err));
+    };
 
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form>
                     <input
                         type="text"
                         placeholder="What Location..."
@@ -78,9 +106,9 @@ class CreateExp extends React.Component {
                         value={this.state.service_type}
                         onChange={this.handleChange}
                     />
-                    <button>Add Trip</button>
                 </form>
-                
+                <button onClick={this.handleUpdate}>Update Trip Info</button>
+                <button onClick={this.deletePost}>Delete Trip</button>
             </div>
         );
     }
