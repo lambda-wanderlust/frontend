@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import { withRouter } from "react-router-dom";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -6,18 +8,36 @@ class LoginForm extends React.Component {
     this.state = {
       username: '',
       password: '',
-      userType: ''
     }
   }
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value })
+
+  }
+
+  onSubmit = e => {
+    e.preventDefault();
+    const user = {
+      username: this.state.username,
+      password: this.state.password,
+    }
+    console.log('user: ', user);
+    axios.post('https://lambda-wanderlust-backend.herokuapp.com/api/accounts/login', user)
+    .then(res => {
+      console.log(res.data.token);
+      localStorage.setItem('token', res.data.token);
+      this.props.history.push('/travel-info');
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   render() {
 
     return (
-      <form>
+      <form onSubmit={this.onSubmit}>
 
         <label>Username</label>
         <input
@@ -39,11 +59,11 @@ class LoginForm extends React.Component {
           required
         />
 
-        {/* <h2>{props.userType === Guide ? "Guide" : "Tourist"}</h2> */}
+        <button>Login</button>
 
       </form>
     )
   }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);
