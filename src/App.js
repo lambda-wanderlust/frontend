@@ -25,11 +25,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-<<<<<<< HEAD
         <Route exact path="/" component={RouteLogin} />
         <Route exact path="/create-user-form" component={CreateAccountForm} />
         <Route exact path="/travel-info" component={TravelInfo} />
-=======
         <Route exact path="/" render={(props) => {
           return <RouteLogin props={this.state} userLogin={this.userLogin}/>
         }} />
@@ -37,7 +35,6 @@ class App extends Component {
           return <CreateAccountForm />
         }} />
         <TravelInfo />
->>>>>>> 2951a24b23d540de4dd7da37622fe80ddbbef40d
       </div>
     );
   }
