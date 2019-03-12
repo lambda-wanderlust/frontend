@@ -25,6 +25,7 @@ class TravelInfo extends React.Component {
   }
 
 createExperience = () => {
+    console.log(this.props)
     this.props.history.push("/create-exp");
 }
 
