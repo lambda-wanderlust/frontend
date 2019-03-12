@@ -1,7 +1,17 @@
 import React from "react";
 
+
+
+
 const SingleTripCard = props => {
-  console.log(props);
+  const { id } = props.match.params;
+  const trip = props.trips.find(thing => {
+    return `${thing.id}` === id;  
+  });
+
+  
+  
+
   return (
     <div>
       <p>test</p>
