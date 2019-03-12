@@ -3,7 +3,6 @@ import axios from "axios";
 import { Route, Link } from "react-router-dom";
 import TravelCard from "./TravelCard";
 import CreateExp from "./CreateExp";
-import UpdateExp from "./UpdateExp";
 
 class TravelInfo extends React.Component {
   constructor(props) {
@@ -114,7 +113,6 @@ class TravelInfo extends React.Component {
           return <TravelCard key={trip.id} trip={trip} />;
         })}
         <Route path="/guides/createexp" component={CreateExp} />
-        <Route path="/guides/updateexp/:id" component={UpdateExp} />
         {/*TESTING TO BE REMOVED*/}
         <CreateExp />
       </div>
