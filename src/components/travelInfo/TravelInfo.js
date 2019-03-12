@@ -94,17 +94,17 @@ class TravelInfo extends React.Component {
     };
   }
 
-  //componentDidMount() {
-  //axios
-  //.get("https://lambda-wanderlust-backend.herokuapp.com/api/trips")
-  //.then(res => {
-  //console.log(res);
-  //this.SetState({ trips: res.trips });
-  //})
-  //.catch(err => {
-  //console.log(err);
-  //});
-  //}
+  componentDidMount() {
+    axios
+      .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips")
+      .then(res => {
+        // console.log(res.data);
+        this.setState({ trips: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   render() {
     return (
