@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { withRouter } from "react-router-dom";
 
 class CreateAccountForm extends React.Component {
   constructor(props) {
@@ -36,8 +37,7 @@ class CreateAccountForm extends React.Component {
     console.log('newUser: ', newUser);
     axios.post('https://lambda-wanderlust-backend.herokuapp.com/api/accounts/register', newUser)
     .then(res => {
-      console.log(res);
-      console.log('res.data: ', res.data);
+      this.props.history.push('/travel-info');
     })
     .catch(err => {
       console.log(err);
@@ -115,4 +115,4 @@ class CreateAccountForm extends React.Component {
   }
 }
 
-export default CreateAccountForm;
+export default withRouter(CreateAccountForm);

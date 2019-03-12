@@ -25,16 +25,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path="/" component={RouteLogin} />
-        <Route exact path="/create-user-form" component={CreateAccountForm} />
-        <Route exact path="/travel-info" component={TravelInfo} />
-        <Route exact path="/" render={(props) => {
-          return <RouteLogin props={this.state} userLogin={this.userLogin}/>
-        }} />
-        <Route exact path="/create-user-form" render={(props) => {
-          return <CreateAccountForm />
-        }} />
-        <TravelInfo />
+        <Route exact path="/" render={(props) => { return <RouteLogin props={this.state} userLogin={this.userLogin}/> }} />
+        <Route path="/create-user-form" render={(props) => { return <CreateAccountForm props={this.state} /> }} />
+        <Route path="/travel-info" render={(props) => { return <TravelInfo props={this.state} /> }} />
       </div>
     );
   }
