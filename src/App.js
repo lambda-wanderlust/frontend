@@ -26,7 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <Route exact path="/" render={(props) => { return <RouteLogin props={this.state} userLogin={this.userLogin}/> }} />
-        <Route path="/create-user-form" render={(props) => { return <CreateAccountForm props={this.state} /> }} />
+        <Route path="/create-user-form" render={(props) => { return <CreateAccountForm props={this.state} userLogin={this.userLogin} /> }} />
         <Route path="/travel-info" render={(props) => { return <TravelInfo props={this.state} /> }} />
       </div>
     );
