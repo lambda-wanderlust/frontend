@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { withRouter } from "react-router-dom";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class LoginForm extends React.Component {
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value })
+
   }
 
   onSubmit = e => {
@@ -22,8 +24,10 @@ class LoginForm extends React.Component {
     }
     console.log('user: ', user);
     axios.post('https://lambda-wanderlust-backend.herokuapp.com/api/accounts/login', user)
-      .then(res => {
-        console.log(res);
+    .then(res => {
+      console.log(res.data.token);
+      localStorage.setItem('token', res.data.token);
+      this.props.history.push('/travel-info');
       })
       .catch(err => {
         console.log(err);
@@ -62,4 +66,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);

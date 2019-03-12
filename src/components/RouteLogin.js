@@ -7,7 +7,7 @@ const RouteLogin = props => {
   return (
     <div>
       <h1>Wanderlust!</h1>
-      <LoginForm props={props}/>
+      <LoginForm props={props} />
       <Link to="/create-user-form">Create New Account</Link>
     </div>
   );
