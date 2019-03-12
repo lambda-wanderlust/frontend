@@ -39,7 +39,7 @@ class LoginForm extends React.Component {
           required
         />
 
-        {/* <h2>{props.userType === Guide ? "Guide" : "Tourist"}</h2> */}
+        <button>Login</button>
 
       </form>
     )
