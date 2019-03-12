@@ -10,11 +10,12 @@ const SingleTripCard = props => {
   });
 
   
-  
+  console.log(trip)
+  console.log(props)
 
   return (
     <div>
-      <p>test</p>
+      <p>{trip.id}</p>
     </div>
   );
 };
