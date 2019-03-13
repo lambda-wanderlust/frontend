@@ -26,13 +26,13 @@ class UpdateExp extends React.Component {
         console.log(this.state)
     };
 
-    handleUpdate = (e, id) => {
-        let updatedTrip = this.state;
-        console.log(this.state);
+    handleUpdate = (e) => {
+        let updatedTrip = this.state.trip;
+        console.log(this.state.trip);
         e.preventDefault();
     axios
         .put(
-            "https://lambda-wanderlust-backend.herokuapp.com/api/trips",
+            `https://lambda-wanderlust-backend.herokuapp.com/api/trips/${this.state.id}`,
             updatedTrip
         )
         .then(res => {
