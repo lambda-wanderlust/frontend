@@ -1,8 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import TravelCard from "./TravelCard";
-import CreateExp from "./CreateExp";
 import SingleTripCard from "./SingleTripCard";
 
 class TravelInfo extends React.Component {
@@ -25,11 +24,19 @@ class TravelInfo extends React.Component {
       });
   }
 
+  createExperience = () => {
+    console.log(this.props);
+    this.props.history.push("/create-exp");
+  };
+
   render() {
     console.log(this.props.props.guide);
     return (
       <div>
-        {this.props.props.guide ? <button>Create Expereince</button> : null}
+        <input type="text" name="search" onChange={this.handleChange} />
+        {this.props.props.guide ? (
+          <button onClick={this.createExperience}>Create Experience</button>
+        ) : null}
         <Route
           exact
           path="/travel-info"
@@ -42,7 +49,13 @@ class TravelInfo extends React.Component {
         <Route
           path="/travel-info/experiences/:id"
           render={props => {
-            return <SingleTripCard {...props} trips={this.state.trips} />;
+            return (
+              <SingleTripCard
+                {...props}
+                trips={this.state.trips}
+                guide={this.props.props.guide}
+              />
+            );
           }}
         />
       </div>

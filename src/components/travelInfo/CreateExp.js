@@ -34,7 +34,10 @@ class CreateExp extends React.Component {
         "https://lambda-wanderlust-backend.herokuapp.com/api/trips",
         newTrip
       )
-      .then(res => res.data)
+      .then(res => {
+        console.log(res.data);
+        this.props.history.push("/travel-info");
+      })
       .catch(err => console.log(err));
   };
 
