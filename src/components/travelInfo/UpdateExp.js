@@ -16,7 +16,6 @@ class UpdateExp extends React.Component {
     };
   }
 
-
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value });
     };
@@ -71,7 +70,7 @@ class UpdateExp extends React.Component {
   };
 
   componentWillMount() {
-    this.setState({ id: this.props.match.params.id });
+    this.setState({ id: this.props.match.params.id - 1 });
   }
 
   componentDidMount() {
