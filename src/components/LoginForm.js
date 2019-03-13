@@ -8,6 +8,7 @@ class LoginForm extends React.Component {
     this.state = {
       username: '',
       password: '',
+      error: '',
     }
   }
 
@@ -22,9 +23,9 @@ class LoginForm extends React.Component {
       username: this.state.username,
       password: this.state.password,
     }
-    console.log('user: ', user);
     axios.post('https://lambda-wanderlust-backend.herokuapp.com/api/accounts/login', user)
     .then(res => {
+      console.log(res);
       const guide = res.data.role === 'tourist' ? false : true;
       const id = res.data.id;
       this.props.props.userLogin(guide, id);
@@ -32,7 +33,13 @@ class LoginForm extends React.Component {
       this.props.history.push('/travel-info');
       })
       .catch(err => {
-        console.log(err);
+        console.log(err.message);
+        if (err.message === "Request failed with status code 401"){
+          alert("Incorrect password, please try again");
+        } 
+        if (err.message === "Request failed with status code 404"){
+          alert("Username not found.  If you don't have a username, please create one");
+        }
       })
   }
 

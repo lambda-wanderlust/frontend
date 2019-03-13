@@ -13,6 +13,7 @@ class CreateAccountForm extends React.Component {
       email: '',
       phone: '',
       guide: false,
+      error: '',
     }
   }
 
@@ -35,21 +36,23 @@ class CreateAccountForm extends React.Component {
     }
     axios.post('https://lambda-wanderlust-backend.herokuapp.com/api/accounts/register', newUser)
     .then(res => {
-      const guide = res.data.role === 'tourist' ? false : true;
-      const id = res.data.id;
-      // console.log(res.data);
-      this.props.userLogin(guide, id);
-      localStorage.setItem('token', res.data.token);
-      
-      this.props.history.push('/travel-info');
+      if (res.data.message === "That user already exists!" ){
+        alert("Username already exists, please try again with a different user");
+      } else {
+        const guide = res.data.role === 'tourist' ? false : true;
+        const id = res.data.id;
+        console.log(res.data);
+        this.props.userLogin(guide, id);
+        localStorage.setItem('token', res.data.token);
+        this.props.history.push('/travel-info');
+      }
     })
     .catch(err => {
-      console.log(err);
+      console.log("error: ", err);
     })
   }
 
   render() {
-
     return (
       <form onSubmit={this.onSubmit}>
 
