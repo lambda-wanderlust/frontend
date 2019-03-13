@@ -37,10 +37,10 @@ class CreateAccountForm extends React.Component {
     .then(res => {
       const guide = res.data.role === 'tourist' ? false : true;
       const id = res.data.id;
-      console.log(res.data);
+      // console.log(res.data);
       this.props.userLogin(guide, id);
       localStorage.setItem('token', res.data.token);
-
+      
       this.props.history.push('/travel-info');
     })
     .catch(err => {
@@ -100,7 +100,7 @@ class CreateAccountForm extends React.Component {
         <label>Phone
           <input
             type="phone"
-            placeholder='email@example.com'
+            placeholder='555-555-1234'
             name="phone"
             value={this.state.phone}
             onChange={this.handleChange}

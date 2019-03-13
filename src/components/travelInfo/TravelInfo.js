@@ -35,6 +35,7 @@ class TravelInfo extends React.Component {
                 }}
                 />
                 <Route path="/travel-info/experiences/:id" render={props => {
+                    console.log(props);
                     return <SingleTripCard {...props} trips={this.state.trips} />
                 }} 
                 />

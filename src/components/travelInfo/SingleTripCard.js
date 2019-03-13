@@ -1,21 +1,21 @@
 import React from "react";
 
 
-
-
 const SingleTripCard = props => {
   const { id } = props.match.params;
-  const trip = props.trips.find(thing => {
+  console.log('id: ', id);
+  const trip = props.trips.filter(thing => {
+    console.log('thing.id: ',thing.id);
     return `${thing.id}` === id;  
   });
-
   
-  console.log(trip)
-  console.log(props)
+  console.log('trip: ', trip)
+  console.log('trip: ', props.trip)
+  console.log('props: ', props)
 
   return (
     <div>
-      <p>{trip.id}</p>
+      <p>{trip[0].id}</p>
     </div>
   );
 };
