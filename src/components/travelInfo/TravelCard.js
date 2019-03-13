@@ -3,8 +3,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const TravelCard = props => {
+
+
+
+
+
   return (
-    <div>
+          
+      <div>
       <Link to={`/travel-info/experiences/${props.trip.id}`}>
         <p>Location: {props.trip.location} </p>
         <p>

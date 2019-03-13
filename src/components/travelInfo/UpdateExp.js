@@ -1,31 +1,52 @@
 import React from "react";
-
+import Spinner from '../Spinner/Spinner';
 import axios from "axios";
 
-class CreateExp extends React.Component {
-  constructor(props) {
-    super();
-    this.state = {
-      location: "",
-      quantity: "",
-      units: "",
-      trip_type: "",
-      service_type: ""
-    };
-  }
+class UpdateExp extends React.Component {
+    constructor(props) {
+        super();
+        this.state = {
+            location: "",
+            quantity: "",
+            units: "",
+            trip_type: "",
+            service_type: "",
+            trip: "",
+            id: ""
+        };
+    }
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+    componentWillMount() {
+        this.setState({ id: this.props.match.params.id });
+        
+        
+    }
 
-  handleSubmit = e => {
-    let newTrip = {
-      location: this.state.location,
-      quantity: this.state.quantity,
-      units: this.state.units,
-      trip_type: this.state.trip_type,
-      service_type: this.state.service_type
+    componentDidMount() {
+        axios
+            .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips")
+            .then(res => {
+                this.setState({ trip: res.data[this.state.id]})
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+    
+    
+
+    handleChange = e => {
+        this.setState({ [e.target.name]: e.target.value });
     };
+
+    handleSubmit = e => {
+        let newTrip = {
+            location: this.state.location,
+            quantity: this.state.quantity,
+            units: this.state.units,
+            trip_type: this.state.trip_type,
+            service_type: this.state.service_type
+        };
 
     e.preventDefault();
     console.log(newTrip);
@@ -68,6 +89,8 @@ class CreateExp extends React.Component {
   };
 
   render() {
+      console.log(this.state.trip)
+      if(this.state.trip){
     return (
       <div>
         <form>
@@ -77,6 +100,7 @@ class CreateExp extends React.Component {
             name="location"
             value={this.state.location}
             onChange={this.handleChange}
+            default={this.state.trip.location}
           />
           <input
             type="text"
@@ -110,8 +134,10 @@ class CreateExp extends React.Component {
         <button onClick={this.handleUpdate}>Update Trip Info</button>
         <button onClick={this.deletePost}>Delete Trip</button>
       </div>
-    );
+    );} else {
+        return <Spinner />;
+    }
   }
 }
 
-export default CreateExp;
+export default UpdateExp;

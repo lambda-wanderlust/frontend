@@ -31,7 +31,6 @@ class TravelInfo extends React.Component {
     }
 
     render() {
-        console.log(this.props.props.guide);
         return (
             <div>
                 <input
@@ -56,7 +55,7 @@ class TravelInfo extends React.Component {
                         return <SingleTripCard {...props} trips={this.state.trips} guide={this.props.props.guide} />;
                     }}
                 />
-                <Route path="/update-exp/:id" render= {props => {
+                <Route path="/travel-info/update-exp/:id" render= {props => {
                     return <UpdateExp {...props} trips={this.state.trips}/>
                 }}
                 />

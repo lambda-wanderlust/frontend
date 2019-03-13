@@ -11,7 +11,8 @@ const SingleTripCard = props => {
     });
   
     function updateExp() {
-      props.history.push(`/update-exp/${id}`);
+      console.log(id)
+      props.history.push(`/travel-info/update-exp/${id}`);
     }
   
 
