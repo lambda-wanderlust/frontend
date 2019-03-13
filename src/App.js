@@ -3,7 +3,6 @@ import "./App.css";
 import RouteLogin from "./components/RouteLogin";
 import { Route } from "react-router-dom";
 import TravelInfo from "./components/travelInfo/TravelInfo";
-import UpdateExp from "./components/travelInfo/UpdateExp";
 import CreateAccountForm from "./components/createAccount/CreateAccountForm";
 import CreateExp from "./components/travelInfo/CreateExp";
 

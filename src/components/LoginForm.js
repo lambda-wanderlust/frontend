@@ -22,7 +22,7 @@ class LoginForm extends React.Component {
       username: this.state.username,
       password: this.state.password,
     }
-    console.log('user: ', user);
+    
     axios.post('https://lambda-wanderlust-backend.herokuapp.com/api/accounts/login', user)
     .then(res => {
       const guide = res.data.role === 'tourist' ? false : true;

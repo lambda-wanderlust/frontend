@@ -55,6 +55,7 @@ class TravelInfo extends React.Component {
     //     })
   };
 
+<<<<<<< HEAD
   render() {
     // console.log(this.props.props.guide);
     return (
@@ -94,6 +95,45 @@ class TravelInfo extends React.Component {
       </div>
     );
   }
+=======
+    render() {
+        // console.log(this.props.props.guide);
+        return (
+            <div>
+                <input type="text" name="search" onChange={this.handleChange} />
+                {this.props.props.guide ? (
+                    <button onClick={this.createExperience}>Create Experience</button>
+                ) : null}
+                <Route
+                    exact
+                    path="/travel-info"
+                    render={props => {
+                        return this.state.trips.map(trip => {
+                            return <TravelCard key={trip.id} trip={trip} />;
+                        });
+                    }}
+                />
+                <Route
+                    path="/travel-info/experiences/:id"
+                    render={props => {
+                        return (
+                            <SingleTripCard
+                                {...props}
+                                trips={this.state.trips}
+                                guide={this.props.props.guide}
+                                updatePickedTrip={this.updatePickedTrip}
+                            />
+                        );
+                    }}
+                />
+                <Route path="/travel-info/update-exp/:id" render= {props => {
+                    return <UpdateExp {...props} trips={this.state.trips}/>
+                }}
+                />
+            </div>
+        );
+    }
+>>>>>>> 20cd5043b4d5824d50455f58fbea938445dad45c
 }
 
 export default withRouter(TravelInfo);

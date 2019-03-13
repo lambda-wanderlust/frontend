@@ -1,6 +1,6 @@
 import React from "react";
+import Spinner from '../Spinner/Spinner';
 import axios from "axios";
-import Spinner from "../Spinner/Spinner";
 
 class UpdateExp extends React.Component {
   constructor(props) {
@@ -16,18 +16,19 @@ class UpdateExp extends React.Component {
     };
   }
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
 
-  handleSubmit = e => {
-    let newTrip = {
-      location: this.state.location,
-      quantity: this.state.quantity,
-      units: this.state.units,
-      trip_type: this.state.trip_type,
-      service_type: this.state.service_type
+    handleChange = e => {
+        this.setState({ [e.target.name]: e.target.value });
     };
+
+    handleSubmit = e => {
+        let newTrip = {
+            location: this.state.location,
+            quantity: this.state.quantity,
+            units: this.state.units,
+            trip_type: this.state.trip_type,
+            service_type: this.state.service_type
+        };
 
     e.preventDefault();
     console.log(newTrip);
@@ -100,6 +101,7 @@ class UpdateExp extends React.Component {
             name="location"
             value={this.state.location}
             onChange={this.handleChange}
+
           />
           <input
             type="text"
@@ -133,8 +135,8 @@ class UpdateExp extends React.Component {
         <button onClick={this.handleUpdate}>Update Trip Info</button>
         <button onClick={this.deletePost}>Delete Trip</button>
       </div>
-    );
+    )}
   }
-}
+
 
 export default UpdateExp;
