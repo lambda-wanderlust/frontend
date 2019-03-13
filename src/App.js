@@ -3,7 +3,7 @@ import "./App.css";
 import RouteLogin from "./components/RouteLogin";
 import { Route } from "react-router-dom";
 import TravelInfo from "./components/travelInfo/TravelInfo";
-
+import UpdateExp from "./components/travelInfo/UpdateExp";
 import CreateAccountForm from "./components/createAccount/CreateAccountForm";
 import CreateExp from "./components/travelInfo/CreateExp";
 
@@ -30,6 +30,7 @@ class App extends Component {
         <Route path="/create-user-form" render={(props) => { return <CreateAccountForm props={this.state} userLogin={this.userLogin} /> }} />
         <Route path="/travel-info" render={(props) => { return <TravelInfo {...props} props={this.state} /> }} />
         <Route path="/create-exp" component={CreateExp} />
+        <Route path="/update-exp/:id" component={UpdateExp} />
       </div>
     );
   }
