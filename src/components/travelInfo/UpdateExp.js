@@ -1,16 +1,18 @@
 import React from "react";
-
 import axios from "axios";
+import Spinner from "../Spinner/Spinner";
 
 class UpdateExp extends React.Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
+      id: "",
       location: "",
       quantity: "",
       units: "",
       trip_type: "",
-      service_type: ""
+      service_type: "",
+      loading: true
     };
   }
 
@@ -67,7 +69,28 @@ class UpdateExp extends React.Component {
       .catch(err => console.log(err));
   };
 
+  componentWillMount() {
+    this.setState({ id: this.props.match.params.id });
+  }
+
+  componentDidMount() {
+    console.log("props: ", this.props);
+    axios
+      .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips")
+      .then(res => {
+        console.log("res.data", this.state.id);
+        this.setState({ ...res.data[this.state.id], loading: false });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   render() {
+    console.log(this.props);
+    if (this.state.loading) {
+      return <Spinner />;
+    }
     return (
       <div>
         <form>

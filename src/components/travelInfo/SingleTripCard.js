@@ -6,9 +6,9 @@ const SingleTripCard = props => {
   const trip = props.trips.find(thing => {
     return `${thing.id}` === id;
   });
-
   function updateExp() {
-    props.history.push(`/update-exp/${id}`);
+    props.history.push(`/travel-info/update-exp/${id}`);
+    // props.updatePickedTrip(trip.location, trip.quantity, trip.units, trip.trip_type, trip.service_type);
   }
 
   if (trip) {
