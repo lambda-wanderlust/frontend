@@ -1,4 +1,5 @@
 import React from "react";
+import Spinner from "../Spinner/Spinner.js";
 
 const SingleTripCard = props => {
   const { id } = props.match.params;
@@ -16,7 +17,7 @@ const SingleTripCard = props => {
       </div>
     );
   } else {
-    return <p>Loading...</p>;
+    return <Spinner />;
   }
 };
 
