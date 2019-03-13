@@ -1,16 +1,18 @@
 import React from "react";
-import Spinner from "../Spinner/Spinner.js";
 import axios from "axios";
+import Spinner from "../Spinner/Spinner";
 
-class CreateExp extends React.Component {
+class UpdateExp extends React.Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
-      location: props.location,
-      quantity: props.quantity,
-      units: props.units,
-      trip_type: props.trip_type,
-      service_type: props.service_type,
+      id: '',
+      location: '',
+      quantity: '',
+      units: '',
+      trip_type: '',
+      service_type: '',
+      loading: true,
     };
   }
 
@@ -67,57 +69,71 @@ class CreateExp extends React.Component {
       .catch(err => console.log(err));
   };
 
-  render() {
-    console.log('update exp is running');
-    {if(this.state.location === "") {
-      return <Spinner />
-    } else {
+componentWillMount() {
+  this.setState({id: this.props.match.params.id})
+}
 
-      return (
-        <div>
-          <form>
-            <input
-              type="text"
-              placeholder="What Location..."
-              name="location"
-              value={this.state.location}
-              onChange={this.handleChange}
-              />
-            <input
-              type="text"
-              placeholder="What Quantity..."
-              name="quantity"
-              value={this.state.quantity}
-              onChange={this.handleChange}
-              />
-            <input
-              type="text"
-              placeholder="What Units..."
-              name="units"
-              value={this.state.units}
-              onChange={this.handleChange}
-              />
-            <input
-              type="text"
-              placeholder="What Trip Type..."
-              name="trip_type"
-              value={this.state.trip_type}
-              onChange={this.handleChange}
-              />
-            <input
-              type="text"
-              placeholder="What Service Type..."
-              name="service_type"
-              value={this.state.service_type}
-              onChange={this.handleChange}
-              />
-          </form>
-          <button onClick={this.handleUpdate}>Update Trip Info</button>
-          <button onClick={this.deletePost}>Delete Trip</button>
-        </div>
-      );
-    }}
+componentDidMount() {
+  console.log("props: ",this.props);
+  axios.get("https://lambda-wanderlust-backend.herokuapp.com/api/trips")
+  .then(res => {
+    console.log("res.data", this.state.id)
+    this.setState({ ...res.data[this.state.id], loading: false})
+  })
+  .catch(err => {
+    console.log(err);
+  })
+}
+
+  render() {
+    console.log(this.props);
+    if(this.state.loading) {
+      return <Spinner />
+    }
+    return (
+      <div>
+        <form>
+          <input
+            type="text"
+            placeholder="What Location..."
+            name="location"
+            value={this.state.location}
+            onChange={this.handleChange}
+          />
+          <input
+            type="text"
+            placeholder="What Quantity..."
+            name="quantity"
+            value={this.state.quantity}
+            onChange={this.handleChange}
+          />
+          <input
+            type="text"
+            placeholder="What Units..."
+            name="units"
+            value={this.state.units}
+            onChange={this.handleChange}
+          />
+          <input
+            type="text"
+            placeholder="What Trip Type..."
+            name="trip_type"
+            value={this.state.trip_type}
+            onChange={this.handleChange}
+          />
+          <input
+            type="text"
+            placeholder="What Service Type..."
+            name="service_type"
+            value={this.state.service_type}
+            onChange={this.handleChange}
+          />
+        </form>
+        <button onClick={this.handleUpdate}>Update Trip Info</button>
+        <button onClick={this.deletePost}>Delete Trip</button>
+      </div>
+    );
   }
 }
 
-export default CreateExp;
+export default UpdateExp;
