@@ -100,7 +100,7 @@ class UpdateExp extends React.Component {
             name="location"
             value={this.state.location}
             onChange={this.handleChange}
-            default={this.state.trip.location}
+            
           />
           <input
             type="text"
