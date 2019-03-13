@@ -2,7 +2,7 @@ import React from "react";
 
 import axios from "axios";
 
-class CreateExp extends React.Component {
+class UpdateExp extends React.Component {
   constructor(props) {
     super();
     this.state = {
@@ -114,4 +114,4 @@ class CreateExp extends React.Component {
   }
 }
 
-export default CreateExp;
+export default UpdateExp;
