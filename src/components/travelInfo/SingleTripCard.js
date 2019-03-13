@@ -1,14 +1,17 @@
 import React from "react";
+import Spinner from "../Spinner/Spinner.js";
 
 const SingleTripCard = props => {
-  const { id } = props.match.params;
-  const trip = props.trips.find(thing => {
-    return `${thing.id}` === id;
-  });
-  function updateExp() {
-    props.history.push(`/update-exp/${id}`);
-    
-  }
+  
+    const { id } = props.match.params;
+    const trip = props.trips.find(thing => {
+      return `${thing.id}` === id;
+    });
+  
+    function updateExp() {
+      props.history.push(`/update-exp/${id}`);
+    }
+
   if (trip) {
     return (
       <div>
@@ -19,10 +22,11 @@ const SingleTripCard = props => {
         <p>{trip.service_type}</p>
         {props.guide ? <button onClick={updateExp}>Update Experience</button> : null}
       </div>
-    );
+  );
+  
   } else {
-    return <p>Loading...</p>;
-  }  
+    return <Spinner />;
+  }
 };
 
 export default SingleTripCard;

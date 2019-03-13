@@ -1,16 +1,16 @@
 import React from "react";
-
+import Spinner from "../Spinner/Spinner.js";
 import axios from "axios";
 
 class CreateExp extends React.Component {
   constructor(props) {
     super();
     this.state = {
-      location: "",
-      quantity: "",
-      units: "",
-      trip_type: "",
-      service_type: ""
+      location: props.location,
+      quantity: props.quantity,
+      units: props.units,
+      trip_type: props.trip_type,
+      service_type: props.service_type,
     };
   }
 
@@ -67,11 +67,12 @@ class CreateExp extends React.Component {
       .catch(err => console.log(err));
   };
 
-  componentDidUpdate() {
-    
-  }
-
   render() {
+    console.log('update exp is running');
+    {if(this.state.location === "") {
+      return <Spinner />
+    } else {
+
       return (
         <div>
           <form>
@@ -81,40 +82,41 @@ class CreateExp extends React.Component {
               name="location"
               value={this.state.location}
               onChange={this.handleChange}
-            />
+              />
             <input
               type="text"
               placeholder="What Quantity..."
               name="quantity"
               value={this.state.quantity}
               onChange={this.handleChange}
-            />
+              />
             <input
               type="text"
               placeholder="What Units..."
               name="units"
               value={this.state.units}
               onChange={this.handleChange}
-            />
+              />
             <input
               type="text"
               placeholder="What Trip Type..."
               name="trip_type"
               value={this.state.trip_type}
               onChange={this.handleChange}
-            />
+              />
             <input
               type="text"
               placeholder="What Service Type..."
               name="service_type"
               value={this.state.service_type}
               onChange={this.handleChange}
-            />
+              />
           </form>
           <button onClick={this.handleUpdate}>Update Trip Info</button>
           <button onClick={this.deletePost}>Delete Trip</button>
         </div>
       );
+    }}
   }
 }
 

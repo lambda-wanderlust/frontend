@@ -3,6 +3,7 @@ import axios from "axios";
 import { Route } from "react-router-dom";
 import TravelCard from "./TravelCard";
 import SingleTripCard from "./SingleTripCard";
+import UpdateExp from "./UpdateExp";
 
 class TravelInfo extends React.Component {
   constructor(props) {
@@ -35,8 +36,25 @@ class TravelInfo extends React.Component {
             <div>
                 <input type="text" name="search" onChange={this.handleChange} />
                 {this.props.props.guide ? <button onClick={this.createExperience}>Create Experience</button> : null}
-                <Route exact path="/travel-info" render={props => { return this.state.trips.map(trip => { return <TravelCard key={trip.id} trip={trip} />; }); }} />
-                <Route path="/travel-info/experiences/:id" render={props => { return <SingleTripCard {...props} trips={this.state.trips} guide={this.props.props.guide} />; }} />
+                <Route
+                    exact
+                    path="/travel-info"
+                    render={props => {
+                        return this.state.trips.map(trip => {
+                            return <TravelCard key={trip.id} trip={trip} />;
+                        });
+                    }}
+                />
+                <Route
+                    path="/travel-info/experiences/:id"
+                    render={props => {
+                        return <SingleTripCard {...props} trips={this.state.trips} guide={this.props.props.guide} />;
+                    }}
+                />
+                <Route path="/update-exp/:id" render= {props => {
+                    return <UpdateExp {...props} trips={this.state.trips}/>
+                }}
+                />
             </div>
         );
     }
