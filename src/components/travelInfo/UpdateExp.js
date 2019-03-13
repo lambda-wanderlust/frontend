@@ -67,50 +67,54 @@ class CreateExp extends React.Component {
       .catch(err => console.log(err));
   };
 
+  componentDidUpdate() {
+    
+  }
+
   render() {
-    return (
-      <div>
-        <form>
-          <input
-            type="text"
-            placeholder="What Location..."
-            name="location"
-            value={this.state.location}
-            onChange={this.handleChange}
-          />
-          <input
-            type="text"
-            placeholder="What Quantity..."
-            name="quantity"
-            value={this.state.quantity}
-            onChange={this.handleChange}
-          />
-          <input
-            type="text"
-            placeholder="What Units..."
-            name="units"
-            value={this.state.units}
-            onChange={this.handleChange}
-          />
-          <input
-            type="text"
-            placeholder="What Trip Type..."
-            name="trip_type"
-            value={this.state.trip_type}
-            onChange={this.handleChange}
-          />
-          <input
-            type="text"
-            placeholder="What Service Type..."
-            name="service_type"
-            value={this.state.service_type}
-            onChange={this.handleChange}
-          />
-        </form>
-        <button onClick={this.handleUpdate}>Update Trip Info</button>
-        <button onClick={this.deletePost}>Delete Trip</button>
-      </div>
-    );
+      return (
+        <div>
+          <form>
+            <input
+              type="text"
+              placeholder="What Location..."
+              name="location"
+              value={this.state.location}
+              onChange={this.handleChange}
+            />
+            <input
+              type="text"
+              placeholder="What Quantity..."
+              name="quantity"
+              value={this.state.quantity}
+              onChange={this.handleChange}
+            />
+            <input
+              type="text"
+              placeholder="What Units..."
+              name="units"
+              value={this.state.units}
+              onChange={this.handleChange}
+            />
+            <input
+              type="text"
+              placeholder="What Trip Type..."
+              name="trip_type"
+              value={this.state.trip_type}
+              onChange={this.handleChange}
+            />
+            <input
+              type="text"
+              placeholder="What Service Type..."
+              name="service_type"
+              value={this.state.service_type}
+              onChange={this.handleChange}
+            />
+          </form>
+          <button onClick={this.handleUpdate}>Update Trip Info</button>
+          <button onClick={this.deletePost}>Delete Trip</button>
+        </div>
+      );
   }
 }
 
