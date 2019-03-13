@@ -1,21 +1,21 @@
-import React from 'react';
+import React from "react";
 
-import axios from 'axios';
+import axios from "axios";
 
 class CreateExp extends React.Component {
   constructor(props) {
     super();
     this.state = {
-      location: '',
-      quantity: '',
-      units: '',
-      trip_type: '',
-      service_type: '',
+      location: "",
+      quantity: "",
+      units: "",
+      trip_type: "",
+      service_type: ""
     };
   }
 
   handleChange = e => {
-    this.setState({[e.target.name]: e.target.value});
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   handleSubmit = e => {
@@ -24,15 +24,15 @@ class CreateExp extends React.Component {
       quantity: this.state.quantity,
       units: this.state.units,
       trip_type: this.state.trip_type,
-      service_type: this.state.service_type,
+      service_type: this.state.service_type
     };
 
     e.preventDefault();
     console.log(newTrip);
     axios
       .post(
-        'https://lambda-wanderlust-backend.herokuapp.com/api/trips',
-        newTrip,
+        "https://lambda-wanderlust-backend.herokuapp.com/api/trips",
+        newTrip
       )
       .then(res => res.data)
       .catch(err => console.log(err));

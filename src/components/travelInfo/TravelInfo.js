@@ -3,14 +3,15 @@ import axios from "axios";
 import { Route } from "react-router-dom";
 import TravelCard from "./TravelCard";
 import SingleTripCard from "./SingleTripCard";
+import UpdateExp from "./UpdateExp";
 
 class TravelInfo extends React.Component {
-    constructor(props) {
-        super(props);
-            this.state = {
-                trips: []
-            };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      trips: []
+    };
+  }
 
     componentDidMount() {
         axios
@@ -54,6 +55,10 @@ class TravelInfo extends React.Component {
                     render={props => {
                         return <SingleTripCard {...props} trips={this.state.trips} guide={this.props.props.guide} />;
                     }}
+                />
+                <Route path="/update-exp/:id" render= {props => {
+                    return <UpdateExp {...props} trips={this.state.trips}/>
+                }}
                 />
             </div>
         );

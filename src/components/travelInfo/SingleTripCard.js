@@ -1,4 +1,5 @@
 import React from "react";
+import Spinner from "../Spinner/Spinner.js";
 
 const SingleTripCard = props => {
   
@@ -13,6 +14,9 @@ const SingleTripCard = props => {
       props.history.push(`/update-exp/${id}`);
     }
   
+
+
+  if (trip) {
     return (
       <div>
         <p>{trip.location}</p>
@@ -24,6 +28,9 @@ const SingleTripCard = props => {
       </div>
   );
   
+  } else {
+    return <Spinner />;
+  }
 };
 
 export default SingleTripCard;
