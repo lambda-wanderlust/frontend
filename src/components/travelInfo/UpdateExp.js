@@ -3,36 +3,18 @@ import Spinner from '../Spinner/Spinner';
 import axios from "axios";
 
 class UpdateExp extends React.Component {
-    constructor(props) {
-        super();
-        this.state = {
-            location: "",
-            quantity: "",
-            units: "",
-            trip_type: "",
-            service_type: "",
-            trip: "",
-            id: ""
-        };
-    }
-
-    componentWillMount() {
-        this.setState({ id: this.props.match.params.id });
-        
-        
-    }
-
-    componentDidMount() {
-        axios
-            .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips")
-            .then(res => {
-                this.setState({ trip: res.data[this.state.id]})
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
-    
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: "",
+      location: "",
+      quantity: "",
+      units: "",
+      trip_type: "",
+      service_type: "",
+      loading: true
+    };
+  }
     
 
     handleChange = e => {
@@ -88,9 +70,28 @@ class UpdateExp extends React.Component {
       .catch(err => console.log(err));
   };
 
+  componentWillMount() {
+    this.setState({ id: this.props.match.params.id - 1 });
+  }
+
+  componentDidMount() {
+    console.log("props: ", this.props);
+    axios
+      .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips")
+      .then(res => {
+        console.log("res.data", this.state.id);
+        this.setState({ ...res.data[this.state.id], loading: false });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   render() {
-      console.log(this.state.trip)
-      if(this.state.trip){
+    console.log(this.props);
+    if (this.state.loading) {
+      return <Spinner />;
+    }
     return (
       <div>
         <form>
@@ -134,9 +135,7 @@ class UpdateExp extends React.Component {
         <button onClick={this.handleUpdate}>Update Trip Info</button>
         <button onClick={this.deletePost}>Delete Trip</button>
       </div>
-    );} else {
-        return <Spinner />;
-    }
+    );
   }
 }
 
