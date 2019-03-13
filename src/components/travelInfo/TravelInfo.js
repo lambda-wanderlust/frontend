@@ -6,42 +6,48 @@ import CreateExp from "./CreateExp";
 import SingleTripCard from "./SingleTripCard";
 
 class TravelInfo extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            trips: []
-        };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      trips: []
+    };
+  }
 
-    componentDidMount() {
-        axios
-            .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips")
-            .then(res => {
-                this.setState({ trips: res.data });
-            })
-            .catch(err => {
-                console.log(err);
+  componentDidMount() {
+    axios
+      .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips")
+      .then(res => {
+        console.log(res.data);
+        this.setState({ trips: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  render() {
+    console.log(this.props.props.guide);
+    return (
+      <div>
+        {this.props.props.guide ? <button>Create Expereince</button> : null}
+        <Route
+          exact
+          path="/travel-info"
+          render={props => {
+            return this.state.trips.map(trip => {
+              return <TravelCard key={trip.id} trip={trip} />;
             });
-    }
-
-    render() {
-        return (
-            <div>
-                <Route exact path="/travel-info" render={props => {
-                    
-                    return this.state.trips.map(trip => {
-                        return <TravelCard key={trip.id} trip={trip} />;
-                    })
-                }}
-                />
-                <Route path="/travel-info/experiences/:id" render={props => {
-                    console.log(props);
-                    return <SingleTripCard {...props} trips={this.state.trips} />
-                }} 
-                />
-            </div>
-        );
-    }
+          }}
+        />
+        <Route
+          path="/travel-info/experiences/:id"
+          render={props => {
+            return <SingleTripCard {...props} trips={this.state.trips} />;
+          }}
+        />
+      </div>
+    );
+  }
 }
 
 export default TravelInfo;
