@@ -1,6 +1,29 @@
 import React from 'react';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
+import styled from 'styled-components';
+
+const StyledDiv = styled.div`
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+`;
+
+const StyledButton = styled.button`
+    font-size: 1.3rem;
+    width: 100px;
+    margin: 5px auto;
+    
+`;
+
+const StyledInput = styled.input`
+    font-size: 1.3rem;
+    margin: 5px;
+`;
+
+const StyledLabel = styled.label`
+    font-size: 1.3rem;
+`;
 
 class CreateAccountForm extends React.Component {
   constructor(props) {
@@ -35,8 +58,12 @@ class CreateAccountForm extends React.Component {
     }
     axios.post('https://lambda-wanderlust-backend.herokuapp.com/api/accounts/register', newUser)
     .then(res => {
-      console.log(res.data.token);
+      const guide = res.data.role === 'tourist' ? false : true;
+      const id = res.data.id;
+      // console.log(res.data);
+      this.props.userLogin(guide, id);
       localStorage.setItem('token', res.data.token);
+      
       this.props.history.push('/travel-info');
     })
     .catch(err => {
@@ -48,9 +75,9 @@ class CreateAccountForm extends React.Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-
-        <label>Username
-          <input
+        <StyledDiv>
+        <StyledLabel>Username: 
+          <StyledInput
             type="text"
             placeholder='Username...'
             name='username'
@@ -58,10 +85,10 @@ class CreateAccountForm extends React.Component {
             onChange={this.handleChange}
             required
           />
-        </label>
+        </StyledLabel>
 
-        <label>Password
-          <input
+        <StyledLabel>Password: 
+          <StyledInput
             type="password"
             placeholder='Password'
             name="password"
@@ -69,10 +96,10 @@ class CreateAccountForm extends React.Component {
             onChange={this.handleChange}
             required
           />
-        </label>
+        </StyledLabel>
 
-        <label>Name
-          <input
+        <StyledLabel>Name: 
+          <StyledInput
             type="name"
             placeholder='John Smyth'
             name="name"
@@ -80,10 +107,10 @@ class CreateAccountForm extends React.Component {
             onChange={this.handleChange}
             required
           />
-        </label>
+        </StyledLabel>
 
-        <label>Email
-          <input
+        <StyledLabel>Email: 
+          <StyledInput
             type="email"
             placeholder='email@example.com'
             name="email"
@@ -91,25 +118,25 @@ class CreateAccountForm extends React.Component {
             onChange={this.handleChange}
             required
           />
-        </label>
+        </StyledLabel>
 
-        <label>Phone
-          <input
+        <StyledLabel>Phone: 
+          <StyledInput
             type="phone"
-            placeholder='email@example.com'
+            placeholder='555-555-1234'
             name="phone"
             value={this.state.phone}
             onChange={this.handleChange}
             required
           />
-        </label>
+        </StyledLabel>
 
-        <label>Are you a guide?
-          <input type="checkbox" name="guide" onChange={this.handleCheckBoxChange} value={this.state.guide} />
-        </label>
+        <StyledLabel>Are you a guide?
+          <StyledInput type="checkbox" name="guide" onChange={this.handleCheckBoxChange} value={this.state.guide} />
+        </StyledLabel>
 
-        <button>Submit</button>
-
+        <StyledButton>Submit</StyledButton>
+        </StyledDiv>
       </form>
     )
   }
