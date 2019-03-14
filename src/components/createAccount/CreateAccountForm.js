@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`
@@ -77,71 +77,85 @@ class CreateAccountForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <StyledDiv>
-        <StyledLabel>Username: 
-          <StyledInput
-            type="text"
-            placeholder='Username...'
-            name='username'
-            value={this.state.username}
-            onChange={this.handleChange}
-            required
-          />
-        </StyledLabel>
+      <>
+        <Link to="/">Back</Link>
+        <form onSubmit={this.onSubmit}>
+          <StyledDiv>
+            <StyledLabel>
+              Username:
+              <StyledInput
+                type="text"
+                placeholder="Username..."
+                name="username"
+                value={this.state.username}
+                onChange={this.handleChange}
+                required
+              />
+            </StyledLabel>
 
-        <StyledLabel>Password: 
-          <StyledInput
-            type="password"
-            placeholder='Password'
-            name="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            required
-          />
-        </StyledLabel>
+            <StyledLabel>
+              Password:
+              <StyledInput
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+                required
+              />
+            </StyledLabel>
 
-        <StyledLabel>Name: 
-          <StyledInput
-            type="name"
-            placeholder='John Smyth'
-            name="name"
-            value={this.state.name}
-            onChange={this.handleChange}
-            required
-          />
-        </StyledLabel>
+            <StyledLabel>
+              Name:
+              <StyledInput
+                type="name"
+                placeholder="John Smyth"
+                name="name"
+                value={this.state.name}
+                onChange={this.handleChange}
+                required
+              />
+            </StyledLabel>
 
-        <StyledLabel>Email: 
-          <StyledInput
-            type="email"
-            placeholder='email@example.com'
-            name="email"
-            value={this.state.email}
-            onChange={this.handleChange}
-            required
-          />
-        </StyledLabel>
+            <StyledLabel>
+              Email:
+              <StyledInput
+                type="email"
+                placeholder="email@example.com"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleChange}
+                required
+              />
+            </StyledLabel>
 
-        <StyledLabel>Phone: 
-          <StyledInput
-            type="phone"
-            placeholder='555-555-1234'
-            name="phone"
-            value={this.state.phone}
-            onChange={this.handleChange}
-            required
-          />
-        </StyledLabel>
+            <StyledLabel>
+              Phone:
+              <StyledInput
+                type="phone"
+                placeholder="555-555-1234"
+                name="phone"
+                value={this.state.phone}
+                onChange={this.handleChange}
+                required
+              />
+            </StyledLabel>
 
-        <StyledLabel>Are you a guide?
-          <StyledInput type="checkbox" name="guide" onChange={this.handleCheckBoxChange} value={this.state.guide} />
-        </StyledLabel>
+            <StyledLabel>
+              Are you a guide?
+              <StyledInput
+                type="checkbox"
+                name="guide"
+                onChange={this.handleCheckBoxChange}
+                value={this.state.guide}
+              />
+            </StyledLabel>
 
-        <StyledButton>Submit</StyledButton>
-        </StyledDiv>
-      </form>
-    )
+            <StyledButton>Submit</StyledButton>
+          </StyledDiv>
+        </form>
+      </>
+    );
   }
 }
 
