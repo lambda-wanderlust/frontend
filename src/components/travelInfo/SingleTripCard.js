@@ -12,7 +12,8 @@ const SingleTripCard = props => {
   const trip = props.trips.find(thing => {
     return `${thing.id}` === id;
   });
-  function updateExp() {
+  function updateExp(e) {
+    e.preventDefault();
     props.history.push(`/travel-info/update-exp/${id}`);
   }
 
@@ -24,7 +25,7 @@ const SingleTripCard = props => {
         <p>Trip Terrain: {trip.trip_type}</p>
         <p>Trip Type: {trip.service_type}</p>
         {props.guide ? (
-          <StyledButton onClick={updateExp}>Update Experience</StyledButton>
+          <StyledButton onClick={(e) =>updateExp(e)}>Update Experience</StyledButton>
         ) : null}
       </div>
     );

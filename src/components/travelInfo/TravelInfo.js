@@ -25,10 +25,6 @@ const StyledButton = styled.button`
   font-size: 1.3rem;
 `;
 
-const StyledInput = styled.input`
-  font-size: 1.3rem;
-`;
-
 class TravelInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -48,17 +44,23 @@ class TravelInfo extends React.Component {
   }
 
   componentDidMount() {
+    this.populateArray();
+
+
+  }
+
+  populateArray = () => {
     axios
-      .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips", {
-        headers: { Authorization: localStorage.getItem("token") }
-      })
-      .then(res => {
-        // console.log(res.data);
-        this.setState({ trips: res.data, filteredTrips: res.data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips", {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(res => {
+      // console.log(res.data);
+      this.setState({ trips: res.data, filteredTrips: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
 
   createExperience = () => {
@@ -106,6 +108,7 @@ class TravelInfo extends React.Component {
   };
 
   render() {
+      console.log("travel props", this.populateArray)
     return (
       <div className="travel-info-container">
         <div className="search-bar">
@@ -140,13 +143,14 @@ class TravelInfo extends React.Component {
                 }
                 return (
                   <CardWrapper key={trip.id}>
-                    <TravelCard key={trip.id} trip={trip} />
+                    <TravelCard key={trip.id} trip={trip} populateArray={this.populateArray} />
                   </CardWrapper>
                 );
               });
             }}
           />
         </CardContainer>
+        
         <Route
           exact
           path="/travel-info/"
@@ -173,7 +177,7 @@ class TravelInfo extends React.Component {
         <Route
           path="/travel-info/update-exp/:id"
           render={props => {
-            return <UpdateExp {...props} trips={this.state.trips} />;
+            return <UpdateExp {...props} trips={this.state.trips} populateArray={this.populateArray}/>;
           }}
         />
       </div>
