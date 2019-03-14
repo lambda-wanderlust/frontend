@@ -152,5 +152,4 @@ class TravelInfo extends React.Component {
     );
   }
 }
-
 export default withRouter(TravelInfo);
