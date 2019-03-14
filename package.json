@@ -4,11 +4,8 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-<<<<<<< HEAD
-    "node-sass": "^4.11.0",
-=======
     "jwt-decode": "^2.2.0",
->>>>>>> b1e4f00339544a98603cff6fda5be46d3ca9fd14
+    "node-sass": "^4.11.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",

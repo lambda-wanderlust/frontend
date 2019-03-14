@@ -1,8 +1,6 @@
 .App {
   text-align: center;
-<<<<<<< HEAD
   font-family: "Josefin Sans", sans-serif;
-=======
 }
 
 .App-logo {
@@ -33,5 +31,4 @@
   to {
     transform: rotate(360deg);
   }
->>>>>>> 92548db895009ee6fbabdbbc126e58cfcc232460
 }
