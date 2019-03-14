@@ -51,21 +51,28 @@ class UpdateExp extends React.Component {
       .then(res => {
         console.log(res);
         this.props.history.push(`/travel-info/experiences/${this.state.id}`);
+        window.location.reload();
       })
       .catch(err => {
         console.log(err);
       });
   };
 
-  handleDelete = (e, id) => {
-    let deletePost = this.state;
+  handleDelete = e => {
+    let deletePost = this.state.trips;
     e.preventDefault();
     axios
       .delete(
-        "https://lambda-wanderlust-backend.herokuapp.com/api/trips",
+        `https://lambda-wanderlust-backend.herokuapp.com/api/trips/${
+          this.state.id
+        }`,
         deletePost
       )
-      .then(res => res.data)
+      .then(res => {
+        console.log(res.data);
+        this.props.history.push(`/travel-info`);
+        window.location.reload();
+      })
       .catch(err => console.log(err));
   };
 
@@ -140,7 +147,7 @@ class UpdateExp extends React.Component {
         <StyledButton onClick={this.handleUpdate}>
           Update Trip Info
         </StyledButton>
-        <StyledButton onClick={this.deletePost}>Delete Trip</StyledButton>
+        <StyledButton onClick={this.handleDelete}>Delete Trip</StyledButton>
       </div>
     );
   }
