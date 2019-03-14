@@ -4,6 +4,20 @@ import { Route, withRouter } from "react-router-dom";
 import TravelCard from "./TravelCard";
 import SingleTripCard from "./SingleTripCard";
 import UpdateExp from "./UpdateExp";
+import styled from 'styled-components';
+
+const CardWrapper = styled.div`
+    border: 2px solid black;
+    margin: 10px;
+`;
+
+const StyledButton = styled.button`
+    font-size: 1.3rem;
+`;
+
+const StyledInput = styled.input`
+    font-size: 1.3rem;
+`;
 
 class TravelInfo extends React.Component {
   constructor(props) {
@@ -37,6 +51,10 @@ class TravelInfo extends React.Component {
     this.props.history.push("/create-exp");
   };
 
+  searchHandler = e => {
+      
+  }
+
   updatePickedTrip = (location, quantity, units, trip_type, service_type) => {
     //     console.log(this.state);
     //     this.setState(prevState => {
@@ -59,16 +77,20 @@ class TravelInfo extends React.Component {
     // console.log(this.props.props.guide);
     return (
       <div>
-        <input type="text" name="search" onChange={this.handleChange} />
+        <StyledInput type="text" name="search" onChange={this.handleChange} onSubmit={this.searchHandler} />
         {this.props.props.guide ? (
-          <button onClick={this.createExperience}>Create Experience</button>
+          <StyledButton onClick={this.createExperience}>Create Experience</StyledButton>
         ) : null}
         <Route
           exact
           path="/travel-info"
           render={props => {
             return this.state.trips.map(trip => {
-              return <TravelCard key={trip.id} trip={trip} />;
+              return (
+                <CardWrapper key={trip.id}>
+                    <TravelCard key={trip.id} trip={trip} />
+                </CardWrapper>
+              );
             });
           }}
         />
@@ -76,12 +98,14 @@ class TravelInfo extends React.Component {
           path="/travel-info/experiences/:id"
           render={props => {
             return (
-              <SingleTripCard
-                {...props}
-                trips={this.state.trips}
-                guide={this.props.props.guide}
-                updatePickedTrip={this.updatePickedTrip}
-              />
+                <CardWrapper key={Date.now()}>
+                    <SingleTripCard
+                        {...props}
+                        trips={this.state.trips}
+                        guide={this.props.props.guide}
+                        updatePickedTrip={this.updatePickedTrip}
+                    />
+                </CardWrapper>
             );
           }}
         />

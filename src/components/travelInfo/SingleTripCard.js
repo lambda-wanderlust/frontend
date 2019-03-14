@@ -1,5 +1,11 @@
 import React from "react";
 import Spinner from "../Spinner/Spinner.js";
+import styled from 'styled-components';
+
+
+const StyledButton = styled.button`
+    font-size: 1.3rem;
+`;
 
 const SingleTripCard = props => {
   const { id } = props.match.params;
@@ -14,13 +20,12 @@ const SingleTripCard = props => {
   if (trip) {
     return (
       <div>
-        <p>{trip.location}</p>
-        <p>{trip.quantity}</p>
-        <p>{trip.units}</p>
-        <p>{trip.trip_type}</p>
-        <p>{trip.service_type}</p>
+        <p>Location: {trip.location}</p>
+        <p>Time Required: {trip.quantity} {trip.units}</p>
+        <p>Trip Terrain: {trip.trip_type}</p>
+        <p>Trip Type: {trip.service_type}</p>
         {props.guide ? (
-          <button onClick={updateExp}>Update Experience</button>
+          <StyledButton onClick={updateExp}>Update Experience</StyledButton>
         ) : null}
       </div>
     );
