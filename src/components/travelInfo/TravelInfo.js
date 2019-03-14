@@ -12,6 +12,7 @@ const CardContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  margin: 20px 10px;
 `;
 
 const CardWrapper = styled.div`
