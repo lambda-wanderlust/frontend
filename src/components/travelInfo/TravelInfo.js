@@ -5,6 +5,7 @@ import TravelCard from "./TravelCard";
 import SingleTripCard from "./SingleTripCard";
 import UpdateExp from "./UpdateExp";
 import styled from 'styled-components';
+import SearchForm from './SearchForm';
 
 const CardWrapper = styled.div`
     border: 2px solid black;
@@ -58,7 +59,7 @@ class TravelInfo extends React.Component {
   }
 
   searchHandler = e => {
-    console.log("search Handler Running");
+    // console.log("search Handler Running");
     const searchInput = this.state.search.toLowerCase();
     const searchResults = [];
     this.state.trips.forEach(trip => {
@@ -74,7 +75,7 @@ class TravelInfo extends React.Component {
         searchResults.push(trip);
       }
     });
-    console.log(searchResults);
+    // console.log(searchResults);
     this.setState({ filteredTrips: [...searchResults]})
   }
 
@@ -82,34 +83,15 @@ class TravelInfo extends React.Component {
     this.setState({filteredTrips: this.state.trips});
   }
 
-  updatePickedTrip = (location, quantity, units, trip_type, service_type) => {
-    //     console.log(this.state);
-    //     this.setState(prevState => {
-    //         console.log(prevState.pickedTrip);
-    //         return({
-    //             ...prevState,
-    //             pickedTrip: {
-    //                 location: location,
-    //                 quantity: quantity,
-    //                 units: units,
-    //                 trip_type: trip_type,
-    //                 service_type: service_type,
-    //             }
-    //         }
-    //         )
-    //     })
-  };
-
   render() {
-    // console.log(this.props.props.guide);
     return (
       <div className="travel-info-container">
         <div className="search-bar">
-          <div className="search-form">
-            <StyledInput type="text" name="search" onChange={this.handleChange} onSubmit={this.searchHandler} placeholder="Search for a trip"/>
-            <StyledButton onClick={this.searchHandler}>Search</StyledButton>
-            <StyledButton onClick={this.resetFilter}>Reset</StyledButton>
-          </div>
+            <Route exact path="/travel-info" render={props => {
+              return (
+                <SearchForm {...this.state} resetFilter={this.resetFilter} searchHandler={this.searchHandler} handleChange={this.handleChange}/>
+              );
+            }} />
           {this.props.props.guide ? (
             <StyledButton onClick={this.createExperience}>Create Experience</StyledButton>
           ) : null}
@@ -136,7 +118,6 @@ class TravelInfo extends React.Component {
                         {...props}
                         trips={this.state.trips}
                         guide={this.props.props.guide}
-                        updatePickedTrip={this.updatePickedTrip}
                     />
                 </CardWrapper>
             );

@@ -14,7 +14,6 @@ const SingleTripCard = props => {
   });
   function updateExp() {
     props.history.push(`/travel-info/update-exp/${id}`);
-    // props.updatePickedTrip(trip.location, trip.quantity, trip.units, trip.trip_type, trip.service_type);
   }
 
   if (trip) {
