@@ -11,9 +11,6 @@ const StyledInput = styled.input`
 
 
 class SearchForm extends React.Component {
-  constructor(props){
-    super(props);
-  }
 
   render() {
     return (
