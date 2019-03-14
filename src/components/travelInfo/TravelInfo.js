@@ -16,8 +16,7 @@ const CardContainer = styled.div`
 `;
 
 const CardWrapper = styled.div`
-  <<<<<<<HEAD
-  border: 2px solid black;
+  <<<<<<<headborder: 2px solid black;
   margin: 10px;
 `;
 
