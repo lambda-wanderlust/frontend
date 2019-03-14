@@ -38,7 +38,8 @@ class TravelInfo extends React.Component {
         service_type: ""
       },
       search: "",
-      filteredTrips: []
+      filteredTrips: [],
+      numTripsToDisplay: 5
     };
   }
 
@@ -129,7 +130,10 @@ class TravelInfo extends React.Component {
             exact
             path="/travel-info"
             render={props => {
-              return this.state.filteredTrips.map(trip => {
+              return this.state.filteredTrips.map((trip, index) => {
+                if (index > this.state.numTripsToDisplay) {
+                  return null;
+                }
                 return (
                   <CardWrapper key={trip.id}>
                     <TravelCard key={trip.id} trip={trip} />
@@ -140,6 +144,15 @@ class TravelInfo extends React.Component {
           />
         </CardContainer>
         
+        <Route
+          exact
+          path="/travel-info/"
+          render={props => (
+            <StyledButton {...props} onClick={this.loadMore}>
+              Load More
+            </StyledButton>
+          )}
+        />
         <Route
           path="/travel-info/experiences/:id"
           render={props => {
