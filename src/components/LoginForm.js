@@ -4,26 +4,51 @@ import { withRouter } from "react-router-dom";
 import styled from 'styled-components';
 import jwt_decode from 'jwt-decode';
 
-const StyledButton = styled.button`
-    font-size: 1.3rem;
-    width: 100px;
-    margin: 5px auto;
-`;
 
 const StyledDiv = styled.div`
     display: flex;
     flex-direction: column;
+    width: auto;
 `;
 
 const StyledInput = styled.input`
     margin: 5px auto;
-    font-size: 1.3rem;
+    padding: 5px;
     text-align: center;
-    width: 300px;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    border: .5px solid #F7D95B;;
+    height: 2.5rem;
+    width: 250px;
 `;
 
-const StyledLabel = styled.label`
-    font-size: 1.3rem;
+const Form = styled.form`
+  height: 50vh;
+  padding: 2%;
+  font-family: 'Josefin Sans', sans-serif;
+  margin: 5% 5% 0 5%;
+  background: #247291;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Label = styled.label`
+  font-size: 1.8rem;
+  margin: .5rem;
+  color: #F7D95B;
+`;
+
+const Button = styled.button`
+  color: #247291;
+  background: #F7D95B;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: none;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  margin: 10px 0;
 `;
 
 class LoginForm extends React.Component {
@@ -98,39 +123,6 @@ class LoginForm extends React.Component {
     )
   }
 }
-
-
-const Form = styled.form`
-height: 50vh;
-padding: 2%;
-font-family: 'Josefin Sans', sans-serif;
-margin: 5% 5% 0 5%;
-background: #247291;
-display:flex;
-flex-direction: column;
-border-radius: 5px;
-align-items: center;
-
-`;
-const Label = styled.label`
-font-size: 1.5rem;
-margin: .5rem;
-color: #F7D95B;
-`
-
-const Button = styled.button`
-color: #247291;
-background: #F7D95B;
-text-transform: uppercase;
-padding: 10px 30px;
-border-radius: 10px;
-border: none;
-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-margin: 10px 0;
-
-`;
-
 
 
 export default withRouter(LoginForm);
