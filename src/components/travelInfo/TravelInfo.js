@@ -39,7 +39,7 @@ class TravelInfo extends React.Component {
 
   componentDidMount() {
     axios
-      .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips")
+      .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips", {headers: {Authorization: localStorage.getItem("token")}})
       .then(res => {
         // console.log(res.data);
         this.setState({ trips: res.data, filteredTrips: res.data });
