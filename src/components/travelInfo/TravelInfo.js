@@ -38,7 +38,8 @@ class TravelInfo extends React.Component {
         quantity: "",
         units: "",
         trip_type: "",
-        service_type: ""
+        service_type: "",
+        trip_photo: ""
       },
       search: "",
       filteredTrips: [],
@@ -123,7 +124,8 @@ class TravelInfo extends React.Component {
         quantity: "",
         units: "",
         trip_type: "",
-        service_type: ""
+        service_type: "",
+        trip_photo: "",
       },
       search: "",
       filteredTrips: []
