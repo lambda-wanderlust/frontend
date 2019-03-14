@@ -33,7 +33,8 @@ class TravelInfo extends React.Component {
         service_type: ""
       },
       search: '',
-      filteredTrips: []
+      filteredTrips: [],
+      numTripsToDisplay: 5
     };
   }
 
@@ -100,7 +101,10 @@ class TravelInfo extends React.Component {
           exact
           path="/travel-info"
           render={props => {
-            return this.state.filteredTrips.map(trip => {
+            return this.state.filteredTrips.map((trip, index) => {
+                if(index > this.state.numTripsToDisplay) {
+                    return;
+                }
               return (
                 <CardWrapper key={trip.id}>
                     <TravelCard key={trip.id} trip={trip} />
