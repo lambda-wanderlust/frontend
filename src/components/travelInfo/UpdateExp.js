@@ -3,12 +3,41 @@ import Spinner from "../Spinner/Spinner";
 import axios from "axios";
 import styled from "styled-components";
 
+const StyledDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+`;
+
 const StyledInput = styled.input`
   font-size: 1.3rem;
+  text-align: center;
+  margin: 5px;
+`;
+
+const StyledInputNumber = styled.input`
+  font-size: 1.3rem;
+  text-align: center;
+  margin: 5px 1px;
+  width: 60px;
+`;
+
+const StyledInputUnit = styled.input`
+  font-size: 1.3rem;
+  text-align: center;
+  margin: 5px 1px;
+  width: 60px;
 `;
 
 const StyledButton = styled.button`
   font-size: 1.3rem;
+  margin: 10px;
+  border: 2px dashed #F7D95B;
+  border-radius: 6px;
+`;
+
+const StyledLabel = styled.label`
+    font-size: 1.2rem;
 `;
 
 class UpdateExp extends React.Component {
@@ -51,10 +80,21 @@ class UpdateExp extends React.Component {
       )
 
       .then(res => {
-        console.log(res);
-        this.props.history.push(`/travel-info/experiences/${this.state.id}`);
-        window.location.reload();
-      })
+        console.log(this.props);
+        
+        axios
+            .get('https://lambda-wanderlust-backend.herokuapp.com/api/trips', {headers: {Authorization: localStorage.getItem("token")}})
+            .then(res => {
+                console.log(res)
+                this.props.populateArray();
+                this.props.history.push(`/travel-info/experiences/${this.state.id}`)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        
+        
+    })
       .catch(err => {
         console.log(err);
       });
@@ -73,7 +113,7 @@ class UpdateExp extends React.Component {
       .then(res => {
         console.log(res.data);
         this.props.history.push(`/travel-info`);
-        window.location.reload();
+        // window.location.reload();
       })
       .catch(err => console.log(err));
   };
@@ -106,12 +146,15 @@ class UpdateExp extends React.Component {
   }
 
   render() {
+      console.log("prop update", this.props)
     if (this.state.loading) {
       return <Spinner />;
     }
     return (
       <div>
         <form>
+            <StyledDiv>
+            <StyledLabel>Location: </StyledLabel>
           <StyledInput
             type="text"
             placeholder="What Location..."
@@ -119,20 +162,24 @@ class UpdateExp extends React.Component {
             value={this.state.trip.location}
             onChange={this.handleChange}
           />
-          <StyledInput
+          <StyledLabel>Time: </StyledLabel>
+          <div>
+          <StyledInputNumber
             type="text"
-            placeholder="What Quantity..."
+            placeholder="...#number..."
             name="quantity"
             value={this.state.trip.quantity}
             onChange={this.handleChange}
           />
-          <StyledInput
+          <StyledInputUnit
             type="text"
-            placeholder="What Units..."
+            placeholder="...hours.days.weeks..."
             name="units"
             value={this.state.trip.units}
             onChange={this.handleChange}
           />
+          </div>
+          <StyledLabel>Trip Type: </StyledLabel>
           <StyledInput
             type="text"
             placeholder="What Trip Type..."
@@ -140,6 +187,7 @@ class UpdateExp extends React.Component {
             value={this.state.trip.trip_type}
             onChange={this.handleChange}
           />
+          <StyledLabel>Service: </StyledLabel>
           <StyledInput
             type="text"
             placeholder="What Service Type..."
@@ -147,6 +195,7 @@ class UpdateExp extends React.Component {
             value={this.state.trip.service_type}
             onChange={this.handleChange}
           />
+          </StyledDiv>
         </form>
         <StyledButton onClick={this.handleUpdate}>
           Update Trip Info

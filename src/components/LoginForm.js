@@ -4,27 +4,6 @@ import { withRouter } from "react-router-dom";
 import styled from 'styled-components';
 import jwt_decode from 'jwt-decode';
 
-const StyledButton = styled.button`
-    font-size: 1.3rem;
-    width: 100px;
-    margin: 5px auto;
-`;
-
-const StyledDiv = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
-
-const StyledInput = styled.input`
-    margin: 5px auto;
-    font-size: 1.3rem;
-    text-align: center;
-    width: 300px;
-`;
-
-const StyledLabel = styled.label`
-    font-size: 1.3rem;
-`;
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -70,10 +49,10 @@ class LoginForm extends React.Component {
   render() {
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <StyledDiv>
-          <StyledLabel>Username: </StyledLabel>
-          <StyledInput
+      <Form onSubmit={this.onSubmit}>
+        <div>
+          <Label>Username: </Label>
+          <Input
             type="text"
             placeholder='Username...'
             name='username'
@@ -82,8 +61,8 @@ class LoginForm extends React.Component {
             required
           />
 
-          <StyledLabel>Password: </StyledLabel>
-          <StyledInput
+          <Label>Password: </Label>
+          <Input
             type="password"
             placeholder='Password'
             name="password"
@@ -92,11 +71,49 @@ class LoginForm extends React.Component {
             required
           />
 
-          <StyledButton>Login</StyledButton>
-        </StyledDiv>
-      </form>
+          <Button>Login</Button>
+        </div>
+      </Form>
     )
   }
 }
+
+
+const Form= styled.form`
+height: 50vh;
+font-family: 'Josefin Sans', sans-serif;
+margin: 5% 5% 0 5%;
+background: #247291;
+display:flex;
+flex-direction: column;
+border-radius: 5px;
+align-items: center;
+
+`
+const Label = styled.label`
+font-size: 1.5rem;
+margin: .5rem;
+color: #F7D95B;
+`
+const Input = styled.input`
+font family: 'Josefin Sans', sans-serif;
+font-size: 1.5rem;
+border-radius: 5px;
+
+`
+const Button = styled.button`
+color: #247291;
+background: #F7D95B;
+text-transform: uppercase;
+padding: 10px 30px;
+border-radius: 10px;
+border: none;
+text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+margin: 10px 0;
+
+`
+
+
 
 export default withRouter(LoginForm);

@@ -26,10 +26,6 @@ const StyledButton = styled.button`
   font-size: 1.3rem;
 `;
 
-const StyledInput = styled.input`
-  font-size: 1.3rem;
-`;
-
 class TravelInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -43,22 +39,29 @@ class TravelInfo extends React.Component {
         service_type: ""
       },
       search: "",
-      filteredTrips: []
+      filteredTrips: [],
+      numTripsToDisplay: 5
     };
   }
 
   componentDidMount() {
+    this.populateArray();
+
+
+  }
+
+  populateArray = () => {
     axios
-      .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips", {
-        headers: { Authorization: localStorage.getItem("token") }
-      })
-      .then(res => {
-        // console.log(res.data);
-        this.setState({ trips: res.data, filteredTrips: res.data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips", {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(res => {
+      // console.log(res.data);
+      this.setState({ trips: res.data, filteredTrips: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
 
   createExperience = () => {
@@ -123,6 +126,7 @@ class TravelInfo extends React.Component {
   }
 
   render() {
+      console.log("travel props", this.populateArray)
     return (
       <div className="travel-info-container">
         <div className="search-bar">
@@ -152,16 +156,29 @@ class TravelInfo extends React.Component {
             exact
             path="/travel-info"
             render={props => {
-              return this.state.filteredTrips.map(trip => {
+              return this.state.filteredTrips.map((trip, index) => {
+                if (index > this.state.numTripsToDisplay) {
+                  return null;
+                }
                 return (
                   <CardWrapper key={trip.id}>
-                    <TravelCard key={trip.id} trip={trip} />
+                    <TravelCard key={trip.id} trip={trip} populateArray={this.populateArray} />
                   </CardWrapper>
                 );
               });
             }}
           />
         </CardContainer>
+        
+        <Route
+          exact
+          path="/travel-info/"
+          render={props => (
+            <StyledButton {...props} onClick={this.loadMore}>
+              Load More
+            </StyledButton>
+          )}
+        />
         <Route
           path="/travel-info/experiences/:id"
           render={props => {
@@ -179,7 +196,7 @@ class TravelInfo extends React.Component {
         <Route
           path="/travel-info/update-exp/:id"
           render={props => {
-            return <UpdateExp {...props} trips={this.state.trips} />;
+            return <UpdateExp {...props} trips={this.state.trips} populateArray={this.populateArray}/>;
           }}
         />
       </div>
