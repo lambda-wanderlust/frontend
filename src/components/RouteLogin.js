@@ -17,11 +17,12 @@ export default RouteLogin;
 
 const Div = styled.div`
 background: #247291;
+border-radius: 20px;            
 `
 
 const HeaderOne = styled.h1`
-
-font-family: 'Josefin Sans', sans-serif;
+padding: 2%;
+border-radius: 10px 10px;
 background:#F7D95B; 
 font-size: 3rem;
 color: #247291;

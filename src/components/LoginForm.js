@@ -1,10 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
-<<<<<<< HEAD
-import styled from 'styled-components'
-
-=======
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
@@ -28,7 +24,6 @@ const StyledInput = styled.input`
 const StyledLabel = styled.label`
     font-size: 1.3rem;
 `;
->>>>>>> 18d69fe2b09ef7999988ee1a61fcf7b0cf7c8fc2
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -74,36 +69,9 @@ class LoginForm extends React.Component {
   render() {
 
     return (
-<<<<<<< HEAD
       <Form onSubmit={this.onSubmit}>
-
-        <Label>Username</Label>
-        <Input
-          type="text"
-          placeholder='Username...'
-          name='username'
-          value={this.state.username}
-          onChange={this.handleChange}
-          required
-        />
-
-        <Label>Password</Label>
-        <Input
-          type="password"
-          placeholder='Password'
-          name="password"
-          value={this.state.password}
-          onChange={this.handleChange}
-          required
-        />
-
-        <Button>Login</Button>
-
-      </Form>
-=======
-      <form onSubmit={this.onSubmit}>
         <StyledDiv>
-          <StyledLabel>Username: </StyledLabel>
+          <Label>Username: </Label>
           <StyledInput
             type="text"
             placeholder='Username...'
@@ -113,7 +81,7 @@ class LoginForm extends React.Component {
             required
           />
 
-          <StyledLabel>Password: </StyledLabel>
+          <Label>Password: </Label>
           <StyledInput
             type="password"
             placeholder='Password'
@@ -123,17 +91,17 @@ class LoginForm extends React.Component {
             required
           />
 
-          <StyledButton>Login</StyledButton>
+          <Button>Login</Button>
         </StyledDiv>
-      </form>
->>>>>>> 18d69fe2b09ef7999988ee1a61fcf7b0cf7c8fc2
+      </Form>
     )
   }
 }
 
 
-const Form= styled.form`
+const Form = styled.form`
 height: 50vh;
+padding: 2%;
 font-family: 'Josefin Sans', sans-serif;
 margin: 5% 5% 0 5%;
 background: #247291;
@@ -142,18 +110,13 @@ flex-direction: column;
 border-radius: 5px;
 align-items: center;
 
-`
+`;
 const Label = styled.label`
 font-size: 1.5rem;
 margin: .5rem;
 color: #F7D95B;
 `
-const Input = styled.input`
-font family: 'Josefin Sans', sans-serif;
-font-size: 1.5rem;
-border-radius: 5px;
 
-`
 const Button = styled.button`
 color: #247291;
 background: #F7D95B;
@@ -165,7 +128,7 @@ text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 margin: 10px 0;
 
-`
+`;
 
 
 
