@@ -1,6 +1,19 @@
 import React from 'react';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
+import styled from 'styled-components';
+
+const StyledButton = styled.button`
+    font-size: 1.3rem;
+`;
+
+const StyledInput = styled.input`
+    font-size: 1.3rem;
+`;
+
+const StyledLabel = styled.label`
+    font-size: 1.3rem;
+`;
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -48,8 +61,8 @@ class LoginForm extends React.Component {
     return (
       <form onSubmit={this.onSubmit}>
 
-        <label>Username</label>
-        <input
+        <StyledLabel>Username</StyledLabel>
+        <StyledInput
           type="text"
           placeholder='Username...'
           name='username'
@@ -58,8 +71,8 @@ class LoginForm extends React.Component {
           required
         />
 
-        <label>Password</label>
-        <input
+        <StyledLabel>Password</StyledLabel>
+        <StyledInput
           type="password"
           placeholder='Password'
           name="password"
@@ -68,7 +81,7 @@ class LoginForm extends React.Component {
           required
         />
 
-        <button>Login</button>
+        <StyledButton>Login</StyledButton>
 
       </form>
     )
