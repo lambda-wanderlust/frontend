@@ -80,7 +80,9 @@ class TravelInfo extends React.Component {
     this.state.trips.forEach(trip => {
       if (trip.location.toLowerCase().search(`${searchInput}`) >= 0) {
         searchResults.push(trip);
-      } else if (trip.trip_type.toLowerCase().search(`${searchInput}`) >= 0) {
+      } else if (
+        trip.trip_type.toLowerCase().search(`${searchInput}`) >= 0
+      ) {
         searchResults.push(trip);
       } else if (
         trip.service_type.toLowerCase().search(`${searchInput}`) >= 0
@@ -89,6 +91,8 @@ class TravelInfo extends React.Component {
       } else if (`${trip.quantity}` === searchInput) {
         searchResults.push(trip);
       } else if (trip.units.toLowerCase().search(`${searchInput}`) >= 0) {
+        searchResults.push(trip);
+      } else if (trip.description.toLowerCase().search(`${searchInput}`) >= 0) {
         searchResults.push(trip);
       }
     });

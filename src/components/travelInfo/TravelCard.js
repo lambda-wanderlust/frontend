@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
 import styles from "./TravelCard.module.scss";
 
@@ -17,6 +16,7 @@ const TravelCard = props => {
           </p>
           <p>Trip Terrain: {props.trip.trip_type} </p>
           <p>Trip Type: {props.trip.service_type} </p>
+          <p>Trip Type: {props.trip.description} </p>
         </div>
       </Link>
     </div>
