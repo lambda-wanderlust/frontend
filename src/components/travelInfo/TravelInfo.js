@@ -7,14 +7,25 @@ import UpdateExp from "./UpdateExp";
 import styled from "styled-components";
 import SearchForm from "./SearchForm";
 
+const CardContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 20px 10px;
+`;
+
 const CardWrapper = styled.div`
+  <<<<<<<HEAD
   border: 2px solid black;
   margin: 10px;
 `;
 
-const CardContainer = styled.div``;
-
-const CardContainer = styled.div``;
+const CardWrapper = styled.div`
+  border: 2px solid black;
+  margin: 10px;
+  width: 30%;
+`;
 
 const StyledButton = styled.button`
   font-size: 1.3rem;
