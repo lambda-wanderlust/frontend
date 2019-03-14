@@ -4,11 +4,7 @@ import { withRouter } from "react-router-dom";
 import styled from 'styled-components';
 import jwt_decode from 'jwt-decode';
 
-const StyledButton = styled.button`
-    font-size: 1.3rem;
-    width: 100px;
-    margin: 5px auto;
-`;
+
 
 const StyledDiv = styled.div`
     display: flex;
@@ -22,9 +18,7 @@ const StyledInput = styled.input`
     width: 300px;
 `;
 
-const StyledLabel = styled.label`
-    font-size: 1.3rem;
-`;
+
 
 class LoginForm extends React.Component {
   constructor(props) {

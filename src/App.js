@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import RouteLogin from "./components/RouteLogin";
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import TravelInfo from "./components/travelInfo/TravelInfo";
 import CreateAccountForm from "./components/createAccount/CreateAccountForm";
 import CreateExp from "./components/travelInfo/CreateExp";

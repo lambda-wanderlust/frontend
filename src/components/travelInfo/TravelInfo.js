@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Route, withRouter, Link } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import TravelCard from "./TravelCard";
 import SingleTripCard from "./SingleTripCard";
 import UpdateExp from "./UpdateExp";
