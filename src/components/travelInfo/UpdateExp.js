@@ -1,6 +1,15 @@
 import React from "react";
 import Spinner from "../Spinner/Spinner";
 import axios from "axios";
+import styled from "styled-components";
+
+const StyledInput = styled.input`
+  font-size: 1.3rem;
+`;
+
+const StyledButton = styled.button`
+  font-size: 1.3rem;
+`;
 
 class UpdateExp extends React.Component {
   constructor(props) {
@@ -28,13 +37,15 @@ class UpdateExp extends React.Component {
     console.log(this.state);
   };
 
-  handleUpdate = (e, id) => {
-    let updatedTrip = this.state;
-    console.log(this.state);
+  handleUpdate = e => {
+    let updatedTrip = this.state.trip;
+    console.log(this.state.trip);
     e.preventDefault();
     axios
       .put(
-        "https://lambda-wanderlust-backend.herokuapp.com/api/trips",
+        `https://lambda-wanderlust-backend.herokuapp.com/api/trips/${
+          this.state.id
+        }`,
         updatedTrip
       )
       .then(res => {
@@ -90,35 +101,35 @@ class UpdateExp extends React.Component {
     return (
       <div>
         <form>
-          <input
+          <StyledInput
             type="text"
             placeholder="What Location..."
             name="location"
             value={this.state.trip.location}
             onChange={this.handleChange}
           />
-          <input
+          <StyledInput
             type="text"
             placeholder="What Quantity..."
             name="quantity"
             value={this.state.trip.quantity}
             onChange={this.handleChange}
           />
-          <input
+          <StyledInput
             type="text"
             placeholder="What Units..."
             name="units"
             value={this.state.trip.units}
             onChange={this.handleChange}
           />
-          <input
+          <StyledInput
             type="text"
             placeholder="What Trip Type..."
             name="trip_type"
             value={this.state.trip.trip_type}
             onChange={this.handleChange}
           />
-          <input
+          <StyledInput
             type="text"
             placeholder="What Service Type..."
             name="service_type"
@@ -126,8 +137,10 @@ class UpdateExp extends React.Component {
             onChange={this.handleChange}
           />
         </form>
-        <button onClick={this.handleUpdate}>Update Trip Info</button>
-        <button onClick={this.deletePost}>Delete Trip</button>
+        <StyledButton onClick={this.handleUpdate}>
+          Update Trip Info
+        </StyledButton>
+        <StyledButton onClick={this.deletePost}>Delete Trip</StyledButton>
       </div>
     );
   }
