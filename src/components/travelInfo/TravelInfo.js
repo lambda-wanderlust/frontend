@@ -8,6 +8,8 @@ import styled from "styled-components";
 import SearchForm from "./SearchForm";
 import jwt_decode from "jwt-decode";
 
+import styles from './TravelInfo.module.scss'
+
 const CardContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -169,7 +171,7 @@ class TravelInfo extends React.Component {
             }}
           />
         </CardContainer>
-        
+
         <Route
           exact
           path="/travel-info/"
