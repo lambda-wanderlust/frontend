@@ -53,9 +53,17 @@ class UpdateExp extends React.Component {
       .then(res => {
         console.log(this.props);
         
+        axios
+            .get('https://lambda-wanderlust-backend.herokuapp.com/api/trips', {headers: {Authorization: localStorage.getItem("token")}})
+            .then(res => {
+                console.log(res)
+                this.props.populateArray();
+                this.props.history.push(`/travel-info/experiences/${this.state.id}`)
+            })
+            .catch(err => {
+                console.log(err)
+            })
         
-        this.props.history.push(`/travel-info/experiences/${this.state.id}`);
-        window.location.reload();
         
     })
       .catch(err => {
@@ -76,7 +84,7 @@ class UpdateExp extends React.Component {
       .then(res => {
         console.log(res.data);
         this.props.history.push(`/travel-info`);
-        window.location.reload();
+        // window.location.reload();
       })
       .catch(err => console.log(err));
   };
@@ -109,6 +117,7 @@ class UpdateExp extends React.Component {
   }
 
   render() {
+      console.log("prop update", this.props)
     if (this.state.loading) {
       return <Spinner />;
     }

@@ -23,6 +23,7 @@ class App extends Component {
   }
 
   render() {
+    console.log("Guide stat", this.state.guide)
     return (
       <div className="App">
         <Link to="/">Login</Link>
