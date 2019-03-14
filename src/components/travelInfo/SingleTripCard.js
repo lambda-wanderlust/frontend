@@ -26,13 +26,8 @@ const SingleTripCard = props => {
         </p>
         <p>Trip Terrain: {trip.trip_type}</p>
         <p>Trip Type: {trip.service_type}</p>
-<<<<<<< HEAD
-        {props.guide ? (
-          <StyledButton onClick={(e) =>updateExp(e)}>Update Experience</StyledButton>
-=======
         {jwt_decode(localStorage.getItem("token")).role === "guide" ? (
           <StyledButton onClick={updateExp}>Update Experience</StyledButton>
->>>>>>> b1e4f00339544a98603cff6fda5be46d3ca9fd14
         ) : null}
       </div>
     );
