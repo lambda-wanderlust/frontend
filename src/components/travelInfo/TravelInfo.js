@@ -8,7 +8,7 @@ import styled from "styled-components";
 import SearchForm from "./SearchForm";
 import jwt_decode from "jwt-decode";
 
-import styles from './TravelInfo.module.scss'
+import styles from "./TravelInfo.module.scss";
 
 const CardContainer = styled.div`
   display: flex;
@@ -38,7 +38,8 @@ class TravelInfo extends React.Component {
         quantity: "",
         units: "",
         trip_type: "",
-        service_type: ""
+        service_type: "",
+        trip_photo: ""
       },
       search: "",
       filteredTrips: [],
@@ -48,23 +49,21 @@ class TravelInfo extends React.Component {
 
   componentDidMount() {
     this.populateArray();
-
-
   }
 
   populateArray = () => {
     axios
-    .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips", {
-      headers: { Authorization: localStorage.getItem("token") }
-    })
-    .then(res => {
-      // console.log(res.data);
-      this.setState({ trips: res.data, filteredTrips: res.data });
-    })
-    .catch(err => {
-      console.log(err);
-    });
-  }
+      .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips", {
+        headers: { Authorization: localStorage.getItem("token") }
+      })
+      .then(res => {
+        // console.log(res.data);
+        this.setState({ trips: res.data, filteredTrips: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   createExperience = () => {
     console.log(this.props);
@@ -82,7 +81,9 @@ class TravelInfo extends React.Component {
     this.state.trips.forEach(trip => {
       if (trip.location.toLowerCase().search(`${searchInput}`) >= 0) {
         searchResults.push(trip);
-      } else if (trip.trip_type.toLowerCase().search(`${searchInput}`) >= 0) {
+      } else if (
+        trip.trip_type.toLowerCase().search(`${searchInput}`) >= 0
+      ) {
         searchResults.push(trip);
       } else if (
         trip.service_type.toLowerCase().search(`${searchInput}`) >= 0
@@ -91,6 +92,8 @@ class TravelInfo extends React.Component {
       } else if (`${trip.quantity}` === searchInput) {
         searchResults.push(trip);
       } else if (trip.units.toLowerCase().search(`${searchInput}`) >= 0) {
+        searchResults.push(trip);
+      } else if (trip.description.toLowerCase().search(`${searchInput}`) >= 0) {
         searchResults.push(trip);
       }
     });
@@ -110,7 +113,7 @@ class TravelInfo extends React.Component {
     console.log(this.state.numTripsToDisplay);
   };
 
-  logOut = (e) =>{
+  logOut = e => {
     localStorage.removeItem("token");
     this.setState({
       trips: [],
@@ -119,18 +122,19 @@ class TravelInfo extends React.Component {
         quantity: "",
         units: "",
         trip_type: "",
-        service_type: ""
+        service_type: "",
+        trip_photo: "",
       },
       search: "",
       filteredTrips: []
     });
     this.props.history.push("/");
-  }
+  };
 
   render() {
-      console.log("travel props", this.populateArray)
+    console.log("travel props", this.populateArray);
     return (
-      <div className="travel-info-container">
+      <div className={styles.TravelInfoContainer}>
         <div className="search-bar">
           <StyledButton onClick={this.logOut}>Log Out</StyledButton>
           <Route
@@ -164,7 +168,11 @@ class TravelInfo extends React.Component {
                 }
                 return (
                   <CardWrapper key={trip.id}>
-                    <TravelCard key={trip.id} trip={trip} populateArray={this.populateArray} />
+                    <TravelCard
+                      key={trip.id}
+                      trip={trip}
+                      populateArray={this.populateArray}
+                    />
                   </CardWrapper>
                 );
               });
@@ -198,7 +206,13 @@ class TravelInfo extends React.Component {
         <Route
           path="/travel-info/update-exp/:id"
           render={props => {
-            return <UpdateExp {...props} trips={this.state.trips} populateArray={this.populateArray}/>;
+            return (
+              <UpdateExp
+                {...props}
+                trips={this.state.trips}
+                populateArray={this.populateArray}
+              />
+            );
           }}
         />
       </div>
