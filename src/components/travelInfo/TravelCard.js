@@ -4,19 +4,29 @@ import styles from "./TravelCard.module.scss";
 
 const TravelCard = props => {
   return (
-    <div className={styles.Div}>
-      <Link to={`/travel-info/experiences/${props.trip.id}`}>
-        <div>
-          <img src={props.trip.img} alt="" />
+    <div className={styles.DivWrapper}>
+      <Link
+        className={styles.Link}
+        to={`/travel-info/experiences/${props.trip.id}`}
+      >
+        <div className={styles.ImgDiv}>
+          <img
+            src={`https://lambda-wanderlust-backend.herokuapp.com${
+              props.trip.trip_photo
+            }`}
+            alt={props.trip.location}
+          />
         </div>
-        <div>
-          <p>Location: {props.trip.location} </p>
-          <p>
+        <div className={styles.DescripDiv}>
+          <p className={styles.PTags}>Location: {props.trip.location} </p>
+          <p className={styles.PTags}>
             Time Required: {props.trip.quantity} {props.trip.units}{" "}
           </p>
-          <p>Trip Terrain: {props.trip.trip_type} </p>
-          <p>Trip Type: {props.trip.service_type} </p>
-          <p>Trip Type: {props.trip.description} </p>
+          <p className={styles.PTags}>Trip Terrain: {props.trip.trip_type} </p>
+          <p className={styles.PTags}>Trip Type: {props.trip.service_type} </p>
+          <p className={styles.PTagsDescription}>
+            Trip Type: {props.trip.description}{" "}
+          </p>
         </div>
       </Link>
     </div>

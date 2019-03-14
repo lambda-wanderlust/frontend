@@ -19,9 +19,13 @@ const CardContainer = styled.div`
 `;
 
 const CardWrapper = styled.div`
-  border: 2px solid black;
+  border: 2px solid #247291;
   margin: 10px;
   width: 30%;
+  min-width: 300px;
+  box-shadow: 1px 2px 2px #1a1a1a;
+  border-radius: 6px;
+  background-color: #247291;
 `;
 
 const StyledButton = styled.button`
@@ -38,7 +42,8 @@ class TravelInfo extends React.Component {
         quantity: "",
         units: "",
         trip_type: "",
-        service_type: ""
+        service_type: "",
+        trip_photo: ""
       },
       search: "",
       filteredTrips: [],
@@ -80,9 +85,7 @@ class TravelInfo extends React.Component {
     this.state.trips.forEach(trip => {
       if (trip.location.toLowerCase().search(`${searchInput}`) >= 0) {
         searchResults.push(trip);
-      } else if (
-        trip.trip_type.toLowerCase().search(`${searchInput}`) >= 0
-      ) {
+      } else if (trip.trip_type.toLowerCase().search(`${searchInput}`) >= 0) {
         searchResults.push(trip);
       } else if (
         trip.service_type.toLowerCase().search(`${searchInput}`) >= 0
@@ -121,7 +124,8 @@ class TravelInfo extends React.Component {
         quantity: "",
         units: "",
         trip_type: "",
-        service_type: ""
+        service_type: "",
+        trip_photo: ""
       },
       search: "",
       filteredTrips: []
