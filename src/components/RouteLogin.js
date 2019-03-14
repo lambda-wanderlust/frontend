@@ -17,14 +17,17 @@ export default RouteLogin;
 
 const Div = styled.div`
 background: #247291;
-border-radius: 15px;            
+border-radius: 10px;   
+width: auto;         
 `;
 
 const HeaderOne = styled.h1`
 padding: 2%;
-border-radius: 10px 10px;
+border-radius: 10px 10px 0 0;
 background:#F7D95B; 
-font-size: 3rem;
+font-size: 5rem;
 color: #247291;
 `;
+
+
 

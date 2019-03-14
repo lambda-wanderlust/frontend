@@ -17,7 +17,8 @@ class CreateExp extends React.Component {
       quantity: "",
       units: "",
       trip_type: "",
-      service_type: ""
+      service_type: "",
+      description: '',
     };
   }
 
@@ -31,7 +32,8 @@ class CreateExp extends React.Component {
       quantity: this.state.quantity,
       units: this.state.units,
       trip_type: this.state.trip_type,
-      service_type: this.state.service_type
+      service_type: this.state.service_type,
+      description: this.state.description,
     };
 
     e.preventDefault();
@@ -39,7 +41,8 @@ class CreateExp extends React.Component {
     axios
       .post(
         "https://lambda-wanderlust-backend.herokuapp.com/api/trips",
-        newTrip
+        newTrip, 
+        {headers: {Authorization: localStorage.getItem("token")}}
       )
       .then(res => {
         console.log(res.data);
@@ -85,6 +88,13 @@ class CreateExp extends React.Component {
             placeholder="What Service Type..."
             name="service_type"
             value={this.state.service_type}
+            onChange={this.handleChange}
+          />
+          <StyledInput
+            type="text"
+            placeholder="Trip Description"
+            name="description"
+            value={this.state.description}
             onChange={this.handleChange}
           />
           <StyledButton>Add Trip</StyledButton>

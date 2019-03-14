@@ -13,12 +13,17 @@ const TravelCard = props => {
           
       <div>
         <Link to={`/travel-info/experiences/${props.trip.id}`}>
+        <div>
+          <img src={props.trip.img} alt=""/>
+        </div>
+        <div>
             <p>Location: {props.trip.location} </p>
             <p>
             Time Required: {props.trip.quantity} {props.trip.units}{" "}
             </p>
             <p>Trip Terrain: {props.trip.trip_type} </p>
             <p>Trip Type: {props.trip.service_type} </p>
+        </div>
         </Link>
       </div>
   );
