@@ -5,10 +5,20 @@ import styled from 'styled-components';
 
 const StyledButton = styled.button`
     font-size: 1.3rem;
+    width: 100px;
+    margin: 5px auto;
+`;
+
+const StyledDiv = styled.div`
+    display: flex;
+    flex-direction: column;
 `;
 
 const StyledInput = styled.input`
+    margin: 5px auto;
     font-size: 1.3rem;
+    text-align: center;
+    width: 300px;
 `;
 
 const StyledLabel = styled.label`
@@ -60,29 +70,29 @@ class LoginForm extends React.Component {
 
     return (
       <form onSubmit={this.onSubmit}>
+        <StyledDiv>
+          <StyledLabel>Username: </StyledLabel>
+          <StyledInput
+            type="text"
+            placeholder='Username...'
+            name='username'
+            value={this.state.username}
+            onChange={this.handleChange}
+            required
+          />
 
-        <StyledLabel>Username</StyledLabel>
-        <StyledInput
-          type="text"
-          placeholder='Username...'
-          name='username'
-          value={this.state.username}
-          onChange={this.handleChange}
-          required
-        />
+          <StyledLabel>Password: </StyledLabel>
+          <StyledInput
+            type="password"
+            placeholder='Password'
+            name="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+            required
+          />
 
-        <StyledLabel>Password</StyledLabel>
-        <StyledInput
-          type="password"
-          placeholder='Password'
-          name="password"
-          value={this.state.password}
-          onChange={this.handleChange}
-          required
-        />
-
-        <StyledButton>Login</StyledButton>
-
+          <StyledButton>Login</StyledButton>
+        </StyledDiv>
       </form>
     )
   }
