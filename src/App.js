@@ -39,7 +39,8 @@ class App extends Component {
 const Div = styled.div `
 font-family:'Josefin Sans', sans-serif;
 margin:0 10%;
-box-shadow: 1px 1px 2.5px 3px rgba(0,0,0,.5);
+box-shadow: 2px 5px 2px rgba(0,0,0,1);
+border-radius: 12px;
 `;
 
 export default App;
