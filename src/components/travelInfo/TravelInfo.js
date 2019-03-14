@@ -16,9 +16,7 @@ const StyledButton = styled.button`
   font-size: 1.3rem;
 `;
 
-const StyledInput = styled.input`
-  font-size: 1.3rem;
-`;
+
 
 class TravelInfo extends React.Component {
   constructor(props) {
