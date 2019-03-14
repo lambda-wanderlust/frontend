@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
 import styled from 'styled-components';
+import jwt_decode from 'jwt-decode';
 
 const StyledButton = styled.button`
     font-size: 1.3rem;
@@ -49,10 +50,10 @@ class LoginForm extends React.Component {
     axios.post('https://lambda-wanderlust-backend.herokuapp.com/api/accounts/login', user)
     .then(res => {
       console.log(res);
-      const guide = res.data.role === 'tourist' ? false : true;
+      localStorage.setItem('token', res.data.token);
+      const guide = jwt_decode(localStorage.getItem('token')).role === 'tourist' ? false : true;
       const id = res.data.id;
       this.props.props.userLogin(guide, id);
-      localStorage.setItem('token', res.data.token);
       this.props.history.push('/travel-info');
       })
       .catch(err => {

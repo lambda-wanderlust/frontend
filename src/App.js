@@ -10,14 +10,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      guide: false,
       user_id: '',
     }
   }
 
-  userLogin = (guide, id) => {
+  userLogin = (id) => {
     this.setState({
-      guide: guide,
       user_id: id,
     })
   }

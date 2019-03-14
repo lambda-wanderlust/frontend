@@ -6,6 +6,7 @@ import SingleTripCard from "./SingleTripCard";
 import UpdateExp from "./UpdateExp";
 import styled from "styled-components";
 import SearchForm from "./SearchForm";
+import jwt_decode from "jwt-decode";
 
 const CardContainer = styled.div`
   display: flex;
@@ -122,7 +123,7 @@ class TravelInfo extends React.Component {
               );
             }}
           />
-          {this.props.props.guide ? (
+          {jwt_decode(localStorage.getItem("token")).role === "guide" ? (
             <StyledButton onClick={this.createExperience}>
               Create Experience
             </StyledButton>
