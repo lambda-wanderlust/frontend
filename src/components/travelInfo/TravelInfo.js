@@ -7,6 +7,8 @@ import UpdateExp from "./UpdateExp";
 import styled from "styled-components";
 import SearchForm from "./SearchForm";
 
+import styles from './TravelInfo.module.scss'
+
 const CardContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -150,7 +152,7 @@ class TravelInfo extends React.Component {
             }}
           />
         </CardContainer>
-        
+
         <Route
           exact
           path="/travel-info/"
