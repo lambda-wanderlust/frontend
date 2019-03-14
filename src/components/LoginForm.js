@@ -13,10 +13,11 @@ const StyledDiv = styled.div`
 
 const StyledInput = styled.input`
     margin: 5px auto;
+    padding: 5px;
     text-align: center;
     font-size: 1.3rem;
     border-radius: 10px;
-    border: .5px solid black;
+    border: .5px solid #F7D95B;;
     height: 2.5rem;
     width: 250px;
 `;
@@ -33,7 +34,7 @@ const Form = styled.form`
 `;
 
 const Label = styled.label`
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin: .5rem;
   color: #F7D95B;
 `;
@@ -42,7 +43,7 @@ const Button = styled.button`
   color: #247291;
   background: #F7D95B;
   text-transform: uppercase;
-  padding: 10px 30px;
+  padding: 5px 10px;
   border-radius: 10px;
   border: none;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);

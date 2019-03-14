@@ -8,7 +8,7 @@ const RouteLogin = props => {
     <Div>
       <HeaderOne>Wanderlust!</HeaderOne>
       <LoginForm props={props} />
-      <Link to="/create-user-form">Create New Account</Link>
+      <Link className="link" to="/create-user-form">Create New Account</Link>
     </Div>
   );
 };
@@ -28,6 +28,8 @@ background:#F7D95B;
 font-size: 5rem;
 color: #247291;
 `;
+
+
 
 
 

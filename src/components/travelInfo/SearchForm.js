@@ -15,22 +15,27 @@ margin: 1rem .7rem;
 
 const StyledInput = styled.input`
     font-size: 1.3rem;
-    border-radius: 10px;
+    border-radius: 6px;
     border: .5px solid black;
     height: 2.5rem;
     
 `;
+
+const StyledDiv = styled.div `
+
+
+`
 
 
 class SearchForm extends React.Component {
 
   render() {
     return (
-      <div className="search-form">
+      <StyledDiv className="search-form">
         <StyledInput type="text" name="search" onChange={this.props.handleChange} onSubmit={this.props.searchHandler} placeholder="Search for a trip" />
         <StyledButton onClick={this.props.searchHandler}>Search</StyledButton>
         <StyledButton onClick={this.props.resetFilter}>Reset</StyledButton>
-      </div>
+      </StyledDiv>
     );
   }
 }
