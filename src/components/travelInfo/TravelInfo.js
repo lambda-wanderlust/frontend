@@ -12,6 +12,10 @@ const CardWrapper = styled.div`
     margin: 10px;
 `;
 
+const CardContainer = styled.div`
+  
+`;
+
 const StyledButton = styled.button`
     font-size: 1.3rem;
 `;
@@ -96,19 +100,21 @@ class TravelInfo extends React.Component {
             <StyledButton onClick={this.createExperience}>Create Experience</StyledButton>
           ) : null}
         </div>
-        <Route
-          exact
-          path="/travel-info"
-          render={props => {
-            return this.state.filteredTrips.map(trip => {
-              return (
-                <CardWrapper key={trip.id}>
-                    <TravelCard key={trip.id} trip={trip} />
-                </CardWrapper>
-              );
-            });
-          }}
-        />
+        <CardContainer >
+          <Route
+            exact
+            path="/travel-info"
+            render={props => {
+              return this.state.filteredTrips.map(trip => {
+                return (
+                  <CardWrapper key={trip.id}>
+                      <TravelCard key={trip.id} trip={trip} />
+                  </CardWrapper>
+                );
+              });
+            }}
+          />
+        </CardContainer>
         <Route
           path="/travel-info/experiences/:id"
           render={props => {

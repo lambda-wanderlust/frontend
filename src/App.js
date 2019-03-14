@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import RouteLogin from "./components/RouteLogin";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import TravelInfo from "./components/travelInfo/TravelInfo";
 import CreateAccountForm from "./components/createAccount/CreateAccountForm";
 import CreateExp from "./components/travelInfo/CreateExp";
@@ -25,6 +25,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Link to="/">Login</Link>
         <Route exact path="/" render={(props) => { return <RouteLogin props={this.state} userLogin={this.userLogin} /> }} />
         <Route path="/create-user-form" render={(props) => { return <CreateAccountForm props={this.state} userLogin={this.userLogin} /> }} />
         <Route path="/travel-info" render={(props) => { return <TravelInfo {...props} props={this.state} /> }} />
