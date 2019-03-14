@@ -16,21 +16,12 @@ const CardContainer = styled.div`
 `;
 
 const CardWrapper = styled.div`
-  <<<<<<<headborder: 2px solid black;
-  margin: 10px;
-`;
-
-const CardWrapper = styled.div`
   border: 2px solid black;
   margin: 10px;
   width: 30%;
 `;
 
 const StyledButton = styled.button`
-  font-size: 1.3rem;
-`;
-
-const StyledInput = styled.input`
   font-size: 1.3rem;
 `;
 
@@ -148,6 +139,7 @@ class TravelInfo extends React.Component {
             }}
           />
         </CardContainer>
+        
         <Route
           path="/travel-info/experiences/:id"
           render={props => {
