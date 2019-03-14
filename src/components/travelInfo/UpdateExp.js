@@ -51,10 +51,13 @@ class UpdateExp extends React.Component {
       )
 
       .then(res => {
-        console.log(res);
+        console.log(this.props);
+        
+        
         this.props.history.push(`/travel-info/experiences/${this.state.id}`);
         window.location.reload();
-      })
+        
+    })
       .catch(err => {
         console.log(err);
       });
