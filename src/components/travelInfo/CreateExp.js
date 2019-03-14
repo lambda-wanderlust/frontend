@@ -39,7 +39,8 @@ class CreateExp extends React.Component {
     axios
       .post(
         "https://lambda-wanderlust-backend.herokuapp.com/api/trips",
-        newTrip
+        newTrip, 
+        {headers: {Authorization: localStorage.getItem("token")}}
       )
       .then(res => {
         console.log(res.data);
