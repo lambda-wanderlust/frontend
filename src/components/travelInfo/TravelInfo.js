@@ -1,11 +1,12 @@
 import React from "react";
 import axios from "axios";
-import { Route, withRouter } from "react-router-dom";
+import { Route, withRouter, Link } from "react-router-dom";
 import TravelCard from "./TravelCard";
 import SingleTripCard from "./SingleTripCard";
 import UpdateExp from "./UpdateExp";
 import styled from "styled-components";
 import SearchForm from "./SearchForm";
+import jwt_decode from "jwt-decode";
 
 import styles from './TravelInfo.module.scss'
 
@@ -109,11 +110,29 @@ class TravelInfo extends React.Component {
     console.log(this.state.numTripsToDisplay);
   };
 
+  logOut = (e) =>{
+    localStorage.removeItem("token");
+    this.setState({
+      trips: [],
+      pickedTrip: {
+        location: "",
+        quantity: "",
+        units: "",
+        trip_type: "",
+        service_type: ""
+      },
+      search: "",
+      filteredTrips: []
+    });
+    this.props.history.push("/");
+  }
+
   render() {
       console.log("travel props", this.populateArray)
     return (
       <div className="travel-info-container">
         <div className="search-bar">
+          <StyledButton onClick={this.logOut}>Log Out</StyledButton>
           <Route
             exact
             path="/travel-info"
@@ -128,7 +147,7 @@ class TravelInfo extends React.Component {
               );
             }}
           />
-          {this.props.props.guide ? (
+          {jwt_decode(localStorage.getItem("token")).role === "guide" ? (
             <StyledButton onClick={this.createExperience}>
               Create Experience
             </StyledButton>
