@@ -9,7 +9,6 @@ const StyledDiv = styled.div`
     margin: 0 auto;
     margin-top: 80px;
     background: #247291;
-    border: 3px double black;
     border-radius: 12px;
 `;
 
@@ -18,7 +17,6 @@ const StyledInput = styled.input`
   text-align: center;
   padding: 7px;
   margin: 5px auto;
-  border: 2px solid #F7D95B;
   width: 200px;
   border-radius: 6px;
 `;
@@ -29,7 +27,6 @@ const StyledInputNumber = styled.input`
   padding: 7px;
   margin: 5px 1px;
   width: 98px;
-  border: 2px solid #F7D95B;
   border-radius: 6px;
 `;
 
@@ -39,14 +36,12 @@ const StyledInputUnit = styled.input`
   padding: 7px;
   margin: 5px 1px;
   width: 98px;
-  border: 2px solid #F7D95B;
   border-radius: 6px;
 `;
 
 const StyledInputDescription = styled.textarea`
     font-size: 1.3rem;
     margin: 5px;
-    border: 2px solid #F7D95B;
     min-height: 70px;
     display: flex;
     align-items: flex-start;
@@ -56,7 +51,6 @@ const StyledInputDescription = styled.textarea`
 const StyledButton = styled.button`
   font-size: 1.3rem;
   margin: 10px;
-  border: 2px solid #F7D95B;
   border-radius: 6px;
   background: #247291;
   color: white;
