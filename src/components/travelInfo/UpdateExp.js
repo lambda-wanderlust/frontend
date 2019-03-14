@@ -6,40 +6,79 @@ import styled from "styled-components";
 const StyledDiv = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 10px auto;
+    margin: 0 auto;
+    margin-top: 80px;
+    background: #247291;
+    border: 3px double black;
+    border-radius: 12px;
 `;
 
 const StyledInput = styled.input`
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   text-align: center;
-  margin: 5px;
+  padding: 7px;
+  margin: 5px auto;
+  border: 2px solid #F7D95B;
+  width: 200px;
+  border-radius: 6px;
 `;
 
 const StyledInputNumber = styled.input`
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   text-align: center;
+  padding: 7px;
   margin: 5px 1px;
-  width: 60px;
+  width: 98px;
+  border: 2px solid #F7D95B;
+  border-radius: 6px;
 `;
 
 const StyledInputUnit = styled.input`
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   text-align: center;
+  padding: 7px;
   margin: 5px 1px;
-  width: 60px;
+  width: 98px;
+  border: 2px solid #F7D95B;
+  border-radius: 6px;
 `;
+
+const StyledInputDescription = styled.textarea`
+    font-size: 1.3rem;
+    margin: 5px;
+    border: 2px solid #F7D95B;
+    min-height: 70px;
+    display: flex;
+    align-items: flex-start;
+`;
+
 
 const StyledButton = styled.button`
   font-size: 1.3rem;
   margin: 10px;
-  border: 2px dashed #F7D95B;
+  border: 2px solid #F7D95B;
   border-radius: 6px;
+  background: #247291;
+  color: white;
+  width: 120px;
+  margin: 5px auto;
+  &: hover {
+      background: white;
+      color: #247291;
+      cursor: pointer;
+  }
 `;
 
 const StyledLabel = styled.label`
     font-size: 1.2rem;
-    border: 2px 
+    padding-top: 3px;
+    border: 2px solid black;
+    background: white;
+    border-radius: 6px;
+    width: 95px;
+    margin: 2px auto;
 `;
+
 
 class UpdateExp extends React.Component {
   constructor(props) {
@@ -51,7 +90,8 @@ class UpdateExp extends React.Component {
         quantity: "",
         units: "",
         rip_type: "",
-        service_type: ""
+        service_type: "",
+        description: ""
       },
       loading: true
     };
@@ -155,15 +195,15 @@ class UpdateExp extends React.Component {
       <div>
         <form>
             <StyledDiv>
-            <StyledLabel>Location: </StyledLabel>
+            <StyledLabel>LOCATION</StyledLabel>
           <StyledInput
             type="text"
-            placeholder="What Location..."
+            placeholder="...location..."
             name="location"
             value={this.state.trip.location}
             onChange={this.handleChange}
           />
-          <StyledLabel>Time: </StyledLabel>
+          <StyledLabel>TIME</StyledLabel>
           <div>
           <StyledInputNumber
             type="text"
@@ -174,34 +214,44 @@ class UpdateExp extends React.Component {
           />
           <StyledInputUnit
             type="text"
-            placeholder="...hours.days.weeks..."
+            placeholder="...hrs.days..."
             name="units"
             value={this.state.trip.units}
             onChange={this.handleChange}
           />
           </div>
-          <StyledLabel>Trip Type: </StyledLabel>
+          <StyledLabel>TRIP TYPE</StyledLabel>
           <StyledInput
             type="text"
-            placeholder="What Trip Type..."
+            placeholder="...trip type..."
             name="trip_type"
             value={this.state.trip.trip_type}
             onChange={this.handleChange}
           />
-          <StyledLabel>Service: </StyledLabel>
+          <StyledLabel>SERVICE</StyledLabel>
           <StyledInput
             type="text"
-            placeholder="What Service Type..."
+            placeholder="...service type..."
             name="service_type"
             value={this.state.trip.service_type}
             onChange={this.handleChange}
           />
-          </StyledDiv>
-        </form>
+          <StyledLabel>DESCRIPTION</StyledLabel>
+          <StyledInputDescription
+            type="text"
+            placeholder="...description..."
+            name="description"
+            value={this.state.trip.description}
+            onChange={this.handleChange}
+          />
         <StyledButton onClick={this.handleUpdate}>
           Update Trip Info
         </StyledButton>
         <StyledButton onClick={this.handleDelete}>Delete Trip</StyledButton>
+          </StyledDiv>
+        </form>
+        
+       
       </div>
     );
   }
