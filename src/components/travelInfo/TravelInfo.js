@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Route, withRouter } from "react-router-dom";
+import { Route, withRouter, Link } from "react-router-dom";
 import TravelCard from "./TravelCard";
 import SingleTripCard from "./SingleTripCard";
 import UpdateExp from "./UpdateExp";
@@ -105,10 +105,28 @@ class TravelInfo extends React.Component {
     console.log(this.state.numTripsToDisplay);
   };
 
+  logOut = (e) =>{
+    localStorage.removeItem("token");
+    this.setState({
+      trips: [],
+      pickedTrip: {
+        location: "",
+        quantity: "",
+        units: "",
+        trip_type: "",
+        service_type: ""
+      },
+      search: "",
+      filteredTrips: []
+    });
+    this.props.history.push("/");
+  }
+
   render() {
     return (
       <div className="travel-info-container">
         <div className="search-bar">
+          <StyledButton onClick={this.logOut}>Log Out</StyledButton>
           <Route
             exact
             path="/travel-info"
