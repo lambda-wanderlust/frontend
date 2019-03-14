@@ -64,14 +64,13 @@ class UpdateExp extends React.Component {
   };
 
   handleDelete = e => {
-    let deletePost = this.state.trips;
     e.preventDefault();
     axios
       .delete(
         `https://lambda-wanderlust-backend.herokuapp.com/api/trips/${
           this.state.id
         }`,
-        deletePost,
+
         { headers: { Authorization: localStorage.getItem("token") } }
       )
       .then(res => {
