@@ -109,13 +109,13 @@ display:flex;
 flex-direction: column;
 border-radius: 5px;
 align-items: center;
-
 `;
+
 const Label = styled.label`
 font-size: 1.5rem;
 margin: .5rem;
 color: #F7D95B;
-`
+`;
 
 const Button = styled.button`
 color: #247291;
@@ -127,7 +127,6 @@ border: none;
 text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 margin: 10px 0;
-
 `;
 
 
