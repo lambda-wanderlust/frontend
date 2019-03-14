@@ -1,117 +1,141 @@
 import React from "react";
-
+import Spinner from '../Spinner/Spinner';
 import axios from "axios";
+import styled from 'styled-components';
 
-class CreateExp extends React.Component {
-    constructor(props) {
-        super();
-        this.state = {
-            location: "",
-            quantity: "",
-            units: "",
-            trip_type: "",
-            service_type: ""
-        };
-    }
+const StyledInput = styled.input`
+    font-size: 1.3rem;
+`;
+
+const StyledButton = styled.button`
+    font-size: 1.3rem;
+`;
+
+class UpdateExp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: "",
+      trip: {
+        location: "",
+        quantity: "",
+        units: "",
+        rip_type: "",
+        service_type: "",
+      },
+      loading: true
+    };
+  }
+    
 
     handleChange = e => {
-        this.setState({ [e.target.name]: e.target.value });
+        e.persist();
+        console.log(e.target.name)
+        this.setState(prevState => ({...prevState, trip: {...prevState.trip, [e.target.name]: e.target.value }}));
+        console.log(this.state)
     };
 
-    handleSubmit = e => {
-        let newTrip = {
-            location: this.state.location,
-            quantity: this.state.quantity,
-            units: this.state.units,
-            trip_type: this.state.trip_type,
-            service_type: this.state.service_type
-        };
-
+    handleUpdate = (e) => {
+        let updatedTrip = this.state.trip;
+        console.log(this.state.trip);
         e.preventDefault();
-        console.log(newTrip);
-        //axios
-        //.post(
-        //"https://lambda-wanderlust-backend.herokuapp.com/api/trips",
-        //newTrip
-        //)
-        //.then(res => res.data)
-        //.catch(err => console.log(err));
-    };
-
-    handleUpdate = (e, id) => {
-    let updatedTrip = this.state;
-    console.log(this.state)
-    e.preventDefault();
     axios
         .put(
-        "https://lambda-wanderlust-backend.herokuapp.com/api/trips",
-        updatedTrip
+            `https://lambda-wanderlust-backend.herokuapp.com/api/trips/${this.state.id}`,
+            updatedTrip
         )
         .then(res => {
-            console.log(res)
-        
+            console.log(res);
+            this.props.history.push(`/travel-info/experiences/${this.state.id}`)
         })
         .catch(err => {
-            console.log(err)
-        })
+            console.log(err);
+        });
     };
 
     handleDelete = (e, id) => {
         let deletePost = this.state;
-        e.preventDefault();
+            e.preventDefault();
         axios
-            .delete("https://lambda-wanderlust-backend.herokuapp.com/api/trips",
-            deletePost
+            .delete(
+                "https://lambda-wanderlust-backend.herokuapp.com/api/trips",
+                deletePost
             )
             .then(res => res.data)
             .catch(err => console.log(err));
     };
 
+    componentWillMount() {
+        this.setState({ id: this.props.match.params.id});
+    }
+
+    componentDidMount() {
+        console.log("props: ", this.props);
+        axios
+            .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips")
+            .then(res => {
+                console.log("res.data", this.state.id);
+                const newThing = res.data.find(thing => `${thing.id}` === this.state.id);
+                console.log(newThing);
+                this.setState(prevState => ({ ...prevState, trip: {...newThing}, loading: false }));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
+        
+    }
+
     render() {
+    
+        if (this.state.loading) {
+            return <Spinner />;
+        }
         return (
             <div>
                 <form>
-                    <input
+                    <StyledInput
                         type="text"
                         placeholder="What Location..."
                         name="location"
-                        value={this.state.location}
+                        value={this.state.trip.location}
                         onChange={this.handleChange}
+            
                     />
-                    <input
+                    <StyledInput
                         type="text"
                         placeholder="What Quantity..."
                         name="quantity"
-                        value={this.state.quantity}
+                        value={this.state.trip.quantity}
                         onChange={this.handleChange}
                     />
-                    <input
+                    <StyledInput
                         type="text"
                         placeholder="What Units..."
                         name="units"
-                        value={this.state.units}
+                        value={this.state.trip.units}
                         onChange={this.handleChange}
                     />
-                    <input
+                    <StyledInput
                         type="text"
                         placeholder="What Trip Type..."
                         name="trip_type"
-                        value={this.state.trip_type}
+                        value={this.state.trip.trip_type}
                         onChange={this.handleChange}
                     />
-                    <input
+                    <StyledInput
                         type="text"
                         placeholder="What Service Type..."
                         name="service_type"
-                        value={this.state.service_type}
+                        value={this.state.trip.service_type}
                         onChange={this.handleChange}
                     />
                 </form>
-                <button onClick={this.handleUpdate}>Update Trip Info</button>
-                <button onClick={this.deletePost}>Delete Trip</button>
+                <StyledButton onClick={this.handleUpdate}>Update Trip Info</StyledButton>
+                <StyledButton onClick={this.deletePost}>Delete Trip</StyledButton>
             </div>
         );
     }
 }
 
-export default CreateExp;
+export default UpdateExp;
