@@ -24,7 +24,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("Guide stat", this.state.guide)
     return (
       <Div className="App">
         <Route exact path="/" render={(props) => { return <RouteLogin props={this.state} userLogin={this.userLogin} /> }} />
