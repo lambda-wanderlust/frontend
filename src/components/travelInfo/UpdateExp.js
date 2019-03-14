@@ -46,8 +46,10 @@ class UpdateExp extends React.Component {
         `https://lambda-wanderlust-backend.herokuapp.com/api/trips/${
           this.state.id
         }`,
-        updatedTrip
+        updatedTrip,
+        { headers: { Authorization: localStorage.getItem("token") } }
       )
+
       .then(res => {
         console.log(res);
         this.props.history.push(`/travel-info/experiences/${this.state.id}`);
@@ -66,7 +68,8 @@ class UpdateExp extends React.Component {
         `https://lambda-wanderlust-backend.herokuapp.com/api/trips/${
           this.state.id
         }`,
-        deletePost
+        deletePost,
+        { headers: { Authorization: localStorage.getItem("token") } }
       )
       .then(res => {
         console.log(res.data);
@@ -83,7 +86,9 @@ class UpdateExp extends React.Component {
   componentDidMount() {
     console.log("props: ", this.props);
     axios
-      .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips")
+      .get("https://lambda-wanderlust-backend.herokuapp.com/api/trips", {
+        headers: { Authorization: localStorage.getItem("token") }
+      })
       .then(res => {
         console.log("res.data", this.state.id);
         const newThing = res.data.find(
