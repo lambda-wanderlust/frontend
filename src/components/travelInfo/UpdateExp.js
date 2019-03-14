@@ -38,6 +38,7 @@ const StyledButton = styled.button`
 
 const StyledLabel = styled.label`
     font-size: 1.2rem;
+    border: 2px 
 `;
 
 class UpdateExp extends React.Component {

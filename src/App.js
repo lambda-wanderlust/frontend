@@ -26,12 +26,7 @@ class App extends Component {
   render() {
     console.log("Guide stat", this.state.guide)
     return (
-<<<<<<< HEAD
       <Div className="App">
-        <Link to="/">Login</Link>
-=======
-      <div className="App">
->>>>>>> b1e4f00339544a98603cff6fda5be46d3ca9fd14
         <Route exact path="/" render={(props) => { return <RouteLogin props={this.state} userLogin={this.userLogin} /> }} />
         <Route path="/create-user-form" render={(props) => { return <CreateAccountForm props={this.state} userLogin={this.userLogin} /> }} />
         <Route path="/travel-info" render={(props) => { return <TravelInfo {...props} props={this.state} /> }} />
@@ -45,7 +40,6 @@ const Div = styled.div `
 font-family:'Josefin Sans', sans-serif;
 margin:0 10%;
 box-shadow: 1px 1px 2.5px 3px rgba(0,0,0,.5);
-}
-`
+`;
 
 export default App;
