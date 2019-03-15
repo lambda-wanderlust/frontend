@@ -25,7 +25,7 @@ const TravelCard = props => {
           <p className={styles.PTags}>Trip Terrain: {props.trip.trip_type} </p>
           <p className={styles.PTags}>Trip Type: {props.trip.service_type} </p>
           <p className={styles.PTagsDescription}>
-            Trip Type: {props.trip.description}{" "}
+            Description: {props.trip.description}{" "}
           </p>
         </div>
       </Link>

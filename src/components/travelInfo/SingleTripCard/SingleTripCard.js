@@ -16,8 +16,8 @@ const SingleTripCard = props => {
   if (trip) {
     console.log(trip.trip_photo);
     return (
-      <div>
-        <div>
+      <div className={styles.Divwrapper}>
+        <div className={styles.ImgDiv}>
           <img
             src={`https://lambda-wanderlust-backend.herokuapp.com${
               trip.trip_photo
@@ -25,15 +25,18 @@ const SingleTripCard = props => {
             alt={trip.location}
           />
         </div>
-        <p>Location: {trip.location}</p>
-        <p>
-          Time Required: {trip.quantity} {trip.units}
-        </p>
-        <p>Trip Terrain: {trip.trip_type}</p>
-        <p>Trip Type: {trip.service_type}</p>
-        {jwt_decode(localStorage.getItem("token")).role === "guide" ? (
-          <button className={styles.SingleTripCardBtn} onClick={updateExp}>Update Experience</button>
-        ) : null}
+        <div className={styles.DescripDiv}>
+          <p className={styles.PTags}>Location: {trip.location}</p>
+          <p className={styles.PTags}>
+            Time Required: {trip.quantity} {trip.units}
+          </p>
+          <p className={styles.PTags}>Trip Terrain: {trip.trip_type}</p>
+          <p className={styles.PTags}>Trip Type: {trip.service_type}</p>
+          <p className={styles.PTagsDescription}>Description: {trip.description}</p>
+          {jwt_decode(localStorage.getItem("token")).role === "guide" ? (
+            <button className={styles.SingleTripCardBtn} onClick={updateExp}>Update Experience</button>
+          ) : null}
+        </div>
       </div>
     );
   } else {
