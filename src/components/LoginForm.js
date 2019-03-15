@@ -19,11 +19,11 @@ const StyledInput = styled.input`
     border-radius: 10px;
     border: .5px solid #F7D95B;;
     height: 2.5rem;
-    width: 250px;
+    width: 80%;
 `;
 
 const Form = styled.form`
-  height: 50vh;
+  height: 25vh;
   padding: 2%;
   font-family: 'Josefin Sans', sans-serif;
   margin: 5% 5% 0 5%;
@@ -49,6 +49,10 @@ const Button = styled.button`
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
   margin: 10px 0;
+
+  &:hover{
+    background: white;
+  }
 `;
 
 class LoginForm extends React.Component {

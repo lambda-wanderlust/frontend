@@ -2,13 +2,15 @@ import React from "react";
 import LoginForm from "./LoginForm";
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
+import styles from './RouteLogin.module.scss'
+
 
 const RouteLogin = props => {
   return (
     <Div>
       <HeaderOne>Wanderlust!</HeaderOne>
       <LoginForm props={props} />
-      <Link className="link" to="/create-user-form">Create New Account</Link>
+      <Link className={styles.Link} to="/create-user-form">Create New Account</Link>
     </Div>
   );
 };
@@ -18,7 +20,9 @@ export default RouteLogin;
 const Div = styled.div`
 background: #247291;
 border-radius: 10px;   
-width: auto;         
+width: auto;        
+max-width: 100%;
+padding-bottom: 20px;
 `;
 
 const HeaderOne = styled.h1`

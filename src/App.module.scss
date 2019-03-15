@@ -1,0 +1,21 @@
+.App {
+  font-family:'Josefin Sans', sans-serif;
+  border-radius: 12px;
+  // box-shadow: 1px 1px 2.5px 3px rgba(0,0,0,.5);
+  min-height: 100vh;
+  width: 100%;
+}
+
+body {
+display: flex;
+flex-direction: center;
+align-items: center;
+}
+
+div {
+  height: 100%;
+  margin: 0 auto;
+}
+
+
+
