@@ -1,5 +1,5 @@
 import React from "react";
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../../Spinner/Spinner";
 import axios from "axios";
 import styled from "styled-components";
 

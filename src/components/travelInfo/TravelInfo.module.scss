@@ -6,3 +6,29 @@
 	background-color: white;
 	opacity: 1;
 }
+
+.LogOut {
+	font-size: 1.3rem;
+}
+
+.CreateExpBtn {
+	font-size: 1.3rem;
+}
+
+.CardContainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	margin: 20px 10px;
+}
+
+.CardWrapper{
+	border: 2px solid #247291;
+  margin: 10px;
+  width: 30%;
+  min-width: 300px;
+  box-shadow: 1px 2px 2px #1a1a1a;
+  border-radius: 6px;
+  background-color: #247291;
+}

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import RouteLogin from "./components/RouteLogin";
+import RouteLogin from "./components/travelInfo/RouteLogin/RouteLogin";
 import { Route } from "react-router-dom";
 import TravelInfo from "./components/travelInfo/TravelInfo";
 import CreateAccountForm from "./components/createAccount/CreateAccountForm";

@@ -1,36 +1,13 @@
 import React from "react";
 import axios from "axios";
 import { Route, withRouter } from "react-router-dom";
-import TravelCard from "./TravelCard";
+import TravelCard from "./TravelCard/TravelCard";
 import SingleTripCard from "./SingleTripCard";
-import UpdateExp from "./UpdateExp";
-import styled from "styled-components";
-import SearchForm from "./SearchForm";
+import UpdateExp from "./UpdateExp/UpdateExp";
+import SearchForm from "./SearchForm/SearchForm";
 import jwt_decode from "jwt-decode";
 
 import styles from "./TravelInfo.module.scss";
-
-const CardContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin: 20px 10px;
-`;
-
-const CardWrapper = styled.div`
-  border: 2px solid #247291;
-  margin: 10px;
-  width: 30%;
-  min-width: 300px;
-  box-shadow: 1px 2px 2px #1a1a1a;
-  border-radius: 6px;
-  background-color: #247291;
-`;
-
-const StyledButton = styled.button`
-  font-size: 1.3rem;
-`;
 
 class TravelInfo extends React.Component {
   constructor(props) {
@@ -138,7 +115,7 @@ class TravelInfo extends React.Component {
     return (
       <div className={styles.TravelInfoContainer}>
         <div className="search-bar">
-          <StyledButton onClick={this.logOut}>Log Out</StyledButton>
+          <button className={styles.LogOut} onClick={this.logOut}>Log Out</button>
           <Route
             exact
             path="/travel-info"
@@ -154,12 +131,12 @@ class TravelInfo extends React.Component {
             }}
           />
           {jwt_decode(localStorage.getItem("token")).role === "guide" ? (
-            <StyledButton onClick={this.createExperience}>
+            <button className={styles.CreateExpBtn} onClick={this.createExperience}>
               Create Experience
-            </StyledButton>
+            </button>
           ) : null}
         </div>
-        <CardContainer>
+        <div className={styles.CardContainer}>
           <Route
             exact
             path="/travel-info"
@@ -169,39 +146,39 @@ class TravelInfo extends React.Component {
                   return null;
                 }
                 return (
-                  <CardWrapper key={trip.id}>
+                  <div className={styles.CardWrapper} key={trip.id}>
                     <TravelCard
                       key={trip.id}
                       trip={trip}
                       populateArray={this.populateArray}
                     />
-                  </CardWrapper>
+                  </div>
                 );
               });
             }}
           />
-        </CardContainer>
+        </div>
 
         <Route
           exact
           path="/travel-info/"
           render={props => (
-            <StyledButton {...props} onClick={this.loadMore}>
+            <button {...props} onClick={this.loadMore}>
               Load More
-            </StyledButton>
+            </button>
           )}
         />
         <Route
           path="/travel-info/experiences/:id"
           render={props => {
             return (
-              <CardWrapper key={Date.now()}>
+              <div className={styles.CardWrapper} key={Date.now()}>
                 <SingleTripCard
                   {...props}
                   trips={this.state.trips}
                   guide={this.props.props.guide}
                 />
-              </CardWrapper>
+              </div>
             );
           }}
         />
