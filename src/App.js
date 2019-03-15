@@ -3,10 +3,8 @@ import RouteLogin from "./components/travelInfo/RouteLogin/RouteLogin";
 import { Route } from "react-router-dom";
 import TravelInfo from "./components/travelInfo/TravelInfo";
 import CreateAccountForm from "./components/createAccount/CreateAccountForm";
-import CreateExp from "./components/travelInfo/CreateExp";
+import CreateExp from "./components/travelInfo/CreateExp/CreateExp";
 import styles from './App.module.scss';
-
-
 
 class App extends Component {
   constructor(props) {

@@ -1,59 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
-import styled from 'styled-components';
+import styles from './LoginForm.module.scss';
 import jwt_decode from 'jwt-decode';
-
-
-const StyledDiv = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: auto;
-`;
-
-const StyledInput = styled.input`
-    margin: 5px auto;
-    padding: 5px;
-    text-align: center;
-    font-size: 1.3rem;
-    border-radius: 10px;
-    border: .5px solid #F7D95B;;
-    height: 2.5rem;
-    width: 80%;
-`;
-
-const Form = styled.form`
-  height: 25vh;
-  padding: 2%;
-  font-family: 'Josefin Sans', sans-serif;
-  margin: 5% 5% 0 5%;
-  background: #247291;
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const Label = styled.label`
-  font-size: 1.8rem;
-  margin: .5rem;
-  color: #F7D95B;
-`;
-
-const Button = styled.button`
-  color: #247291;
-  background: #F7D95B;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  border-radius: 10px;
-  border: none;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-  margin: 10px 0;
-
-  &:hover{
-    background: white;
-  }
-`;
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -99,9 +48,10 @@ class LoginForm extends React.Component {
   render() {
 
     return (
-      <form onSubmit={this.onSubmit}>
-          <label>Username: </label>
-          <StyledInput
+      <form className={styles.LoginForm} onSubmit={this.onSubmit}>
+        <label className={styles.LoginLabel}>Username: </label>
+          <input
+          className={styles.LoginInput}
             type="text"
             placeholder='Username...'
             name='username'
@@ -110,8 +60,9 @@ class LoginForm extends React.Component {
             required
           />
 
-          <label>Password: </label>
-          <StyledInput
+        <label className={styles.LoginLabel}>Password: </label>
+          <input
+          className={styles.LoginInput}
             type="password"
             placeholder='Password'
             name="password"
@@ -120,7 +71,7 @@ class LoginForm extends React.Component {
             required
           />
 
-          <button>Login</button>
+        <button className={styles.LoginBtn}>Login</button>
       </form>
     )
   }

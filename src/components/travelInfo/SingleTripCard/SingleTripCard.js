@@ -1,11 +1,7 @@
 import React from "react";
-import Spinner from "../Spinner/Spinner.js";
-import styled from "styled-components";
+import Spinner from "../../Spinner/Spinner.js";
 import jwt_decode from "jwt-decode";
-
-const StyledButton = styled.button`
-  font-size: 1.3rem;
-`;
+import styles from './SingleTripCard.module.scss'
 
 const SingleTripCard = props => {
   const { id } = props.match.params;
@@ -36,7 +32,7 @@ const SingleTripCard = props => {
         <p>Trip Terrain: {trip.trip_type}</p>
         <p>Trip Type: {trip.service_type}</p>
         {jwt_decode(localStorage.getItem("token")).role === "guide" ? (
-          <StyledButton onClick={updateExp}>Update Experience</StyledButton>
+          <button className={styles.SingleTripCardBtn} onClick={updateExp}>Update Experience</button>
         ) : null}
       </div>
     );

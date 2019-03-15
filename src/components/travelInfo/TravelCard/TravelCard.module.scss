@@ -1,6 +1,6 @@
 .DivWrapper {
 	//border: 1px solid green;
-	height: 50%;
+	height: auto;
 	width: 90%;
 	padding: 2%;
 	display: flex;
@@ -9,7 +9,7 @@
 	flex-direction: column;
 
 	@media (max-width: 1200px) {
-		height: 30%;
+		// height: 30%;
 		width: auto;
 	}
 	@media (max-width: 1000px) {
@@ -23,12 +23,13 @@
 	align-items: center;
 	margin-bottom: 6%;
 	overflow: hidden;
-	height: 200px;
+	// height: 200px;
 
 	img {
 		overflow: hidden;
 		background-position: cover;
 		border-radius: 6px;
+		height: 200px;
 	}
 }
 
@@ -37,7 +38,7 @@
 }
 
 .PTagsDescription {
-	height: 80%;
+	// height: 80%;
 	//border: 1px solid black;
 }
 
@@ -45,6 +46,7 @@
 	text-decoration: none;
 	color: white;
 	font-weight: 700;
+	text-align: center;
 }
 
 .DescripDiv {

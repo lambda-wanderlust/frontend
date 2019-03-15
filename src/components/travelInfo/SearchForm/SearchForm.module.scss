@@ -1,22 +1,19 @@
-.SearchForm {
 
-}
 
 .SearchInput {
     font-size: 1.3rem;
-    border-radius: 6px;
-    border: .5px solid black;
-    height: 2.5rem;
+    // border-radius: 6px;
+    border: none;
+    padding: 20px;
+    margin-right: 20px;
+    background-color: rgba(255,255,255,.9);
 }
 
 .SearchBtn {
-    color: #247291;
-    background: #F7D95B;
+    color: white;
+    background: #247291;
     text-transform: uppercase;
-    padding: 5px 15px;
-    border-radius: 10px;
     border: none;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-    margin: 1rem .7rem; 
+    padding: 20px 20px;
+    border-right: 2px solid #323232;
 }

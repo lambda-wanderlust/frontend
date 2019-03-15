@@ -1,10 +1,31 @@
+.SearchBar {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background-color: #323232;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.LogOut {
+	height: 100%;
+	background-color: none;
+	border-right: 2px solid gray;
+	padding: 20px;
+}
+
 .TravelInfoContainer {
 	border: 1px solid #247291;
 	height: 100%;
 	width: 100%;
-	margin: 0 auto;
+	margin: 40px auto 0;
 	background-color: white;
-	opacity: 1;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding-bottom: 40px;
 }
 
 .LogOut {
@@ -20,15 +41,28 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
-	margin: 20px 10px;
+	margin: 50px 10px;
 }
 
 .CardWrapper{
-	border: 2px solid #247291;
+border: 2px solid #247291;
   margin: 10px;
   width: 30%;
-  min-width: 300px;
+  // min-width: 300px;
   box-shadow: 1px 2px 2px #1a1a1a;
   border-radius: 6px;
   background-color: #247291;
+}
+
+.LoadBtn {
+	// border: 1px solid blue;
+	margin: 0 auto;
+	padding: 10px 20px;
+	width: 150px;
+	border: none;
+	background-color: #247291;
+	color: white;
+	font-size: 2rem;
+	border-radius: 6px;
+	box-shadow: 0px 2px 2px #323232;
 }

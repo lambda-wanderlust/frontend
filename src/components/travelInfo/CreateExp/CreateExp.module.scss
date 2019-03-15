@@ -1,0 +1,66 @@
+
+.StyledForm{
+    display: flex;
+    max-width: 800px;
+    flex-direction: column;
+    padding: 80px;
+    background: #247291;
+    border-radius: 12px;
+    box-shadow: 0px 5px 2px #323232;
+    
+}
+
+.CreateExpLabel {
+ font-size: 1.6rem;
+  color: white;
+  font-weight: 400;
+  margin: 10px;
+  text-align: center;
+  
+}
+
+.CreateExpInput {
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    border: .5px solid #F7D95B;;
+    height: 2.5rem;
+    
+}
+
+.CreateExpTextarea {
+    font-size: 1.5rem;
+    margin: 5px auto; 
+    
+    min-height: 70px;
+    display: flex;
+    align-items: flex-start;
+    text-align: center;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.CreateExpBtn {
+    color: #247291;
+    background: white;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    width: 50%;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    margin: 10px auto;
+    font-size: 1.5rem;
+    
+    box-shadow: 0px 3px 2px #323232;
+   
+
+    &:hover {
+      background: white;
+    }
+    
+}
+

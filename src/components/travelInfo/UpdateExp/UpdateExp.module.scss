@@ -1,0 +1,32 @@
+.UpdateExpLabel {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 7px;
+    margin: 5px auto;
+    width: 200px;
+    border-radius: 6px;
+}
+
+.UpdateExpInput {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 7px;
+    margin: 5px auto;
+    width: 200px;
+    border-radius: 6px;
+}
+
+.UpdateExpBtn {
+    font-size: 1.3rem;
+    margin: 10px;
+    border-radius: 6px;
+    background: #247291;
+    color: white;
+    width: 120px;
+    margin: 5px auto;
+    &:hover {
+        background: white;
+        color: #247291;
+        cursor: pointer;
+    }
+}

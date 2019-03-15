@@ -1,29 +1,35 @@
 .RouteLoginDiv {
   background: #247291;
   border-radius: 10px;
-  width: auto;
-  max-width: 100%;
+  width: 100%;
+  max-width: 600px;
   padding-bottom: 20px;
 }
 
 .HeaderOne{
-  padding: 2%;
+  padding: 3%;
+  padding-top: 5%;
   border-radius: 10px 10px 0 0;
-  background:#F7D95B; 
+  // background:#F7D95B; 
   font-size: 5rem;
-  color: #247291;
+  color: white;
+  // border: 1px solid red;
+  text-align: center;
 }
 
 .Link {
+  display: block;
   color: white;
   text-decoration: none;
   font-weight: 500;
   font-size: 1.5rem;
-  margin-bottom: 40px;
   border: 1px solid white;
   background-color: #247291;
   border-radius: 6px;
-  padding: 10px 6px 6px 6px;
+  padding: 5px;
+  margin: 1% auto;
+  width: max-content;
+  text-align: center;
   
   box-shadow: 0px 2px 2px rgba(0,0,0,1);
 

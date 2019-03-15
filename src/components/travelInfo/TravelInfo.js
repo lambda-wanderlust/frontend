@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Route, withRouter } from "react-router-dom";
 import TravelCard from "./TravelCard/TravelCard";
-import SingleTripCard from "./SingleTripCard";
+import SingleTripCard from "./SingleTripCard/SingleTripCard";
 import UpdateExp from "./UpdateExp/UpdateExp";
 import SearchForm from "./SearchForm/SearchForm";
 import jwt_decode from "jwt-decode";
@@ -114,7 +114,7 @@ class TravelInfo extends React.Component {
     console.log("travel props", this.populateArray);
     return (
       <div className={styles.TravelInfoContainer}>
-        <div className="search-bar">
+        <div className={styles.SearchBar}>
           <button className={styles.LogOut} onClick={this.logOut}>Log Out</button>
           <Route
             exact
@@ -163,7 +163,7 @@ class TravelInfo extends React.Component {
           exact
           path="/travel-info/"
           render={props => (
-            <button {...props} onClick={this.loadMore}>
+            <button className={styles.LoadBtn} {...props} onClick={this.loadMore}>
               Load More
             </button>
           )}
