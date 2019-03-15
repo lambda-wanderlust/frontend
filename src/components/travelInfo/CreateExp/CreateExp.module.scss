@@ -3,7 +3,7 @@
     display: flex;
     max-width: 800px;
     flex-direction: column;
-    padding: 80px;
+    padding: 50px;
     background: #247291;
     border-radius: 12px;
     box-shadow: 0px 5px 2px #323232;
@@ -22,6 +22,7 @@
 .CreateExpInput {
     padding: 5px;
     margin: 5px;
+    margin-bottom: 15px;
     text-align: center;
     font-size: 1.3rem;
     border-radius: 10px;
@@ -62,5 +63,12 @@
       background: white;
     }
     
+}
+
+.CreateTrip {
+    color: white;
+    text-align: center;
+    margin-bottom: 5%;
+    text-transform: uppercase;
 }
 

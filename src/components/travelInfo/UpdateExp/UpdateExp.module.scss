@@ -1,32 +1,83 @@
 .UpdateExpLabel {
-    font-size: 1.5rem;
-    text-align: center;
-    padding: 7px;
-    margin: 5px auto;
-    width: 200px;
-    border-radius: 6px;
+  font-size: 1.6rem;
+  color: white;
+  font-weight: 400;
+  margin: 10px;
+  text-align: center;
 }
 
+.headerThree {
+  font-size: 2.5rem;
+  color: white;
+  padding: 20px;
+}
+
+.UpdateExpForm{
+    
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0px;
+    
+    background: #247291;
+    border-radius: 12px;
+    box-shadow: 0px 5px 2px #323232;
+}
+
+.InputDiv{
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  margin: 1% auto;
+  width: 66%;
+}
+
+#Unit, #Quantity {
+  width: 25%;
+  margin-right: 0px;
+}
+
+
+
 .UpdateExpInput {
-    font-size: 1.5rem;
+    padding: 5px;
+    margin: 5px;
     text-align: center;
-    padding: 7px;
-    margin: 5px auto;
-    width: 200px;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    border: .5px solid #F7D95B;;
+    height: 2.5rem;
+}
+
+.UpdateExpText{
+    font-size: 1.5rem;
+    margin: 5px auto; 
+    min-height: 70px;
+    display: flex;
+    text-align: center;
     border-radius: 6px;
+    width: 66%;  
 }
 
 .UpdateExpBtn {
-    font-size: 1.3rem;
-    margin: 10px;
-    border-radius: 6px;
-    background: #247291;
-    color: white;
-    width: 120px;
-    margin: 5px auto;
+    color: #247291;
+    background: white;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    width: 50%;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    margin: 10px auto;
+    font-size: 1.5rem;
+    
+    box-shadow: 0px 3px 2px #323232;
+   
+
     &:hover {
-        background: white;
-        color: #247291;
-        cursor: pointer;
-    }
+      background: white;
+    }  
 }

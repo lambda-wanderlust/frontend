@@ -12,7 +12,13 @@
 		// height: 30%;
 		width: auto;
 	}
-	@media (max-width: 1000px) {
+	@media (max-width: 800px) {
+		// max-height: 80%;
+		flex-wrap: wrap;
+	}
+
+	@media (max-width: 650px) {
+		margin-top: 5%;
 	}
 }
 
@@ -24,6 +30,11 @@
 	margin-bottom: 6%;
 	overflow: hidden;
 	// height: 200px;
+
+	@media (max-width: 850px) {
+		height: auto;
+		width: auto;
+	}
 
 	img {
 		overflow: hidden;
@@ -50,7 +61,17 @@
 }
 
 .DescripDiv {
-	overflow: scroll;
+	overflow: hidden;
 	height: 300px;
 	//border: 1px solid hotpink;
+	// overflow-x: hidden;
 }
+// ::-webkit-scrollbar {
+//     width: 0px;  /* remove scrollbar space */
+//     background: transparent;  /* optional: just make scrollbar invisible */
+// }
+// /* optional: show position indicator in red */
+// ::-webkit-scrollbar-thumb {
+//     background: #FF0000;
+// }
+

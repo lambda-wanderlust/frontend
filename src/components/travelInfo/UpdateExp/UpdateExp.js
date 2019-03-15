@@ -4,6 +4,7 @@ import axios from "axios";
 import styles from './UpdateExp.module.scss'
 
 
+
 class UpdateExp extends React.Component {
   constructor(props) {
     super(props);
@@ -116,63 +117,72 @@ class UpdateExp extends React.Component {
       return <Spinner />;
     }
     return (
-      <div>
-        <form>
-          <label className={styles.UpdateExpLabel}>LOCATION</label>
-          <input
-            className={styles.UpdateExpInput}
-            type="text"
-            placeholder="...location..."
-            name="location"
-            value={this.state.trip.location}
-            onChange={this.handleChange}
-            />
-          <label className={styles.UpdateExpLabel}>TIME</label>
-          <div>
-          <input
-            className={styles.UpdateExpInput}
-            type="text"
-            placeholder="...#number..."
-            name="quantity"
-            value={this.state.trip.quantity}
-            onChange={this.handleChange}
-            />
-          <input
-            className={styles.UpdateExpInput}
-            type="text"
-            placeholder="...hrs.days..."
-            name="units"
-            value={this.state.trip.units}
-            onChange={this.handleChange}
+      
+        <form className={styles.UpdateExpForm}>
+          <h3 className={styles.headerThree}>UPDATE TRIP INFO</h3>
+          <div className={styles.InputDiv}>
+            <label className={styles.UpdateExpLabel}>LOCATION</label>
+            <input
+              className={styles.UpdateExpInput}
+              type="text"
+              placeholder="location"
+              name="location"
+              value={this.state.trip.location}
+              onChange={this.handleChange}
+              />
+          </div>
+          <div className={styles.InputDiv}>
+            <label className={styles.UpdateExpLabel}>TIME</label>
+            <input
+              className={styles.UpdateExpInput}
+              id={styles.Quantity}  
+              type="text"
+              placeholder="number"
+              name="quantity"
+              value={this.state.trip.quantity}
+              onChange={this.handleChange}
+              />
+            <input
+              className={styles.UpdateExpInput}
+              id={styles.Unit}  
+              type="text"
+              placeholder="hrs / days"
+              name="units"
+              value={this.state.trip.units}
+              onChange={this.handleChange}
+              />
+          </div>
+          <div className={styles.InputDiv}>
+            <label className={styles.UpdateExpLabel}>TRIP TYPE</label>
+            <input
+              className={styles.UpdateExpInput}
+              type="text"
+              placeholder="trip type"
+              name="trip_type"
+              value={this.state.trip.trip_type}
+              onChange={this.handleChange}
+              />
+          </div>
+          <div className={styles.InputDiv}>
+            <label className={styles.UpdateExpLabel}>SERVICE</label>
+            <input
+              className={styles.UpdateExpInput}
+              type="text"
+              placeholder="service type"
+              name="service_type"
+              value={this.state.trip.service_type}
+              onChange={this.handleChange}
             />
           </div>
-          <label className={styles.UpdateExpLabel}>TRIP TYPE</label>
-          <input
-            className={styles.UpdateExpInput}
-            type="text"
-            placeholder="...trip type..."
-            name="trip_type"
-            value={this.state.trip.trip_type}
-            onChange={this.handleChange}
-            />
-          <label className={styles.UpdateExpLabel}>SERVICE</label>
-          <input
-            className={styles.UpdateExpInput}
-            type="text"
-            placeholder="...service type..."
-            name="service_type"
-            value={this.state.trip.service_type}
-            onChange={this.handleChange}
-            />
-          <label className={styles.UpdateExpLabel}>DESCRIPTION</label>
-          <textarea
-            className={styles.UpdateExpInput}
-            type="text"
-            placeholder="...description..."
-            name="description"
-            value={this.state.trip.description}
-            onChange={this.handleChange}
-          />
+            <label className={styles.UpdateExpLabel}>DESCRIPTION</label>
+            <textarea
+              className={styles.UpdateExpText}
+              type="text"
+              placeholder="description"
+              name="description"
+              value={this.state.trip.description}
+              onChange={this.handleChange}
+            /> 
         <button className={styles.UpdateExpBtn} onClick={this.handleUpdate}>
           Update Trip Info
         </button>
@@ -180,7 +190,7 @@ class UpdateExp extends React.Component {
         </form>
         
        
-      </div>
+      
     );
   }
 }

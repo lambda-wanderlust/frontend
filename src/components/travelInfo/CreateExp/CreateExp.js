@@ -49,7 +49,10 @@ class CreateExp extends React.Component {
   render() {
     return (
       
+      <React.Fragment>
+        
         <form className={styles.StyledForm} onSubmit={this.handleSubmit}>
+        <h2 className={styles.CreateTrip}>Create Trip!</h2>
           <label className={styles.CreateExpLabel}>LOCATION</label>
           <input
             className={styles.CreateExpInput}
@@ -107,6 +110,7 @@ class CreateExp extends React.Component {
           />
           <button className={styles.CreateExpBtn}>Add Trip</button>
         </form>
+        </React.Fragment>
       
     );
   }
