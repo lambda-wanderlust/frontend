@@ -115,7 +115,7 @@ class TravelInfo extends React.Component {
     return (
       <div className={styles.TravelInfoContainer}>
         <div className={styles.SearchBar}>
-          <button className={styles.LogOut} onClick={this.logOut}>Log Out</button>
+          <h3 className={styles.Logo}>Wanderlust</h3>
           <Route
             exact
             path="/travel-info"
@@ -126,10 +126,11 @@ class TravelInfo extends React.Component {
                   resetFilter={this.resetFilter}
                   searchHandler={this.searchHandler}
                   handleChange={this.handleChange}
-                />
-              );
+                  />
+                  );
             }}
           />
+          <button className={styles.LogOut} onClick={this.logOut}>Log Out</button>
           {jwt_decode(localStorage.getItem("token")).role === "guide" ? (
             <button className={styles.CreateExpBtn} onClick={this.createExperience}>
               Create Experience

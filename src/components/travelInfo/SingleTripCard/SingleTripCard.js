@@ -16,21 +16,21 @@ const SingleTripCard = props => {
   if (trip) {
     console.log(trip.trip_photo);
     return (
-      <div>
-        <div>
-          <img
+      <div className={styles.TripContainer}>
+        <div className={styles.TripImgWrap}>
+          <img className={styles.TripImg}
             src={`https://lambda-wanderlust-backend.herokuapp.com${
               trip.trip_photo
             }`}
             alt={trip.location}
           />
         </div>
-        <p>Location: {trip.location}</p>
-        <p>
+        <p className={styles.TripP}>Location: {trip.location}</p>
+        <p className={styles.TripP}>
           Time Required: {trip.quantity} {trip.units}
         </p>
-        <p>Trip Terrain: {trip.trip_type}</p>
-        <p>Trip Type: {trip.service_type}</p>
+        <p className={styles.TripP}>Trip Terrain: {trip.trip_type}</p>
+        <p className={styles.TripP}>Trip Type: {trip.service_type}</p>
         {jwt_decode(localStorage.getItem("token")).role === "guide" ? (
           <button className={styles.SingleTripCardBtn} onClick={updateExp}>Update Experience</button>
         ) : null}

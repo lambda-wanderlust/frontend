@@ -10,10 +10,13 @@
 }
 
 .SearchBtn {
-    color: white;
-    background: #247291;
-    text-transform: uppercase;
-    border: none;
-    padding: 20px 20px;
-    border-right: 2px solid #323232;
+	height: 100%;
+	background-color: #323232;
+	border: none;
+	color: white;
+	padding: 20px;
+	margin-right: 20px;
+	&:hover {
+		background-color: #454545;
+	}
 }
