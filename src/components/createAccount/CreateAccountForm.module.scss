@@ -1,0 +1,72 @@
+.CreateForm {
+    font-family: 'Josefin Sans', sans-serif;
+    background: #247291;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    width: 100%;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 2px #323232;
+}
+
+.headerTwo {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.CreateFormLabels {
+  font-size: 1.6rem;
+  color: white;
+  font-weight: 400;
+  display: block;
+}
+
+.CreateFormInput {
+  padding: 5px;
+  text-align: center;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    border: .5px solid #F7D95B;;
+    height: 2.5rem;
+    display: block;
+  }
+
+.CreateFormBtns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.CreateFormBtn {
+    color: #247291;
+    background: white;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    margin: 10px 10px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    box-shadow: 0px 3px 2px #323232;
+    text-align: center;
+
+    &:hover {
+      background: white;
+    }
+}
+
+.InputWrapper {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+

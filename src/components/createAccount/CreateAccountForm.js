@@ -1,29 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { withRouter } from "react-router-dom";
-import styled from 'styled-components';
-
-const StyledDiv = styled.div`
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-`;
-
-const StyledButton = styled.button`
-    font-size: 1.3rem;
-    width: 100px;
-    margin: 5px auto;
-    
-`;
-
-const StyledInput = styled.input`
-    font-size: 1.3rem;
-    margin: 5px;
-`;
-
-const StyledLabel = styled.label`
-    font-size: 1.3rem;
-`;
+import { withRouter, Link } from "react-router-dom";
+import styles from './CreateAccountForm.module.scss';
 
 class CreateAccountForm extends React.Component {
   constructor(props) {
@@ -77,71 +55,101 @@ class CreateAccountForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <StyledDiv>
-        <StyledLabel>Username: 
-          <StyledInput
-            type="text"
-            placeholder='Username...'
-            name='username'
-            value={this.state.username}
-            onChange={this.handleChange}
-            required
-          />
-        </StyledLabel>
+      <>
+        <form className={styles.CreateForm} onSubmit={this.onSubmit}>
+            <h2 className={styles.headerTwo}>Create An Account</h2>
+            <div className={styles.InputWrapper}>
+              <label className={styles.CreateFormLabels}>
+                Username:
+                </label>
+                <input
+                  className={styles.CreateFormInput}
+                  type="text"
+                  placeholder="Username..."
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                  required
+                  />
+            </div>
+          <div className={styles.InputWrapper}>
+              <label className={styles.CreateFormLabels}>
+                Password:
+              </label>
+              <input
+                className={styles.CreateFormInput}
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+                required
+                />
+            </div>
 
-        <StyledLabel>Password: 
-          <StyledInput
-            type="password"
-            placeholder='Password'
-            name="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            required
-          />
-        </StyledLabel>
+          <div className={styles.InputWrapper}>
+              <label className={styles.CreateFormLabels}>
+                Name:
+                </label>
+                <input
+                  className={styles.CreateFormInput}
+                  type="name"
+                  placeholder="John Smyth"
+                  name="name"
+                  value={this.state.name}
+                  onChange={this.handleChange}
+                  required
+                  />
+            </div>
 
-        <StyledLabel>Name: 
-          <StyledInput
-            type="name"
-            placeholder='John Smyth'
-            name="name"
-            value={this.state.name}
-            onChange={this.handleChange}
-            required
-          />
-        </StyledLabel>
+            <div className={styles.InputWrapper}>
+              <label className={styles.CreateFormLabels}>
+                Email:
+                </label>
+                <input
+                  className={styles.CreateFormInput}
+                  type="email"
+                  placeholder="email@example.com"
+                  name="email"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                  required
+                  />
+            </div>
 
-        <StyledLabel>Email: 
-          <StyledInput
-            type="email"
-            placeholder='email@example.com'
-            name="email"
-            value={this.state.email}
-            onChange={this.handleChange}
-            required
-          />
-        </StyledLabel>
-
-        <StyledLabel>Phone: 
-          <StyledInput
-            type="phone"
-            placeholder='555-555-1234'
-            name="phone"
-            value={this.state.phone}
-            onChange={this.handleChange}
-            required
-          />
-        </StyledLabel>
-
-        <StyledLabel>Are you a guide?
-          <StyledInput type="checkbox" name="guide" onChange={this.handleCheckBoxChange} value={this.state.guide} />
-        </StyledLabel>
-
-        <StyledButton>Submit</StyledButton>
-        </StyledDiv>
-      </form>
-    )
+            <div className={styles.InputWrapper}>
+              <label className={styles.CreateFormLabels}>
+                Phone:
+                </label>
+                <input
+                  className={styles.CreateFormInput}
+                  type="phone"
+                  placeholder="555-555-1234"
+                  name="phone"
+                  value={this.state.phone}
+                  onChange={this.handleChange}
+                  required
+                  />
+            </div>
+            <div className={styles.InputWrapper}>
+              <label className={styles.CreateFormLabels}>
+                Are you a guide?
+                </label>
+                <input
+                  className={styles.CreateFormInput}
+                  type="checkbox"
+                  name="guide"
+                  onChange={this.handleCheckBoxChange}
+                  value={this.state.guide}
+                  />
+            </div>
+            <div className={styles.CreateFormBtns}>
+              <button className={styles.CreateFormBtn}>Submit</button>
+              <Link className={styles.CreateFormBtn} to="/">Back</Link>
+            </div>
+        </form>
+      </>
+    );
   }
 }
 
