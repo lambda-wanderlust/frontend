@@ -1,4 +1,54 @@
-.Div {
-	border: 1px solid green;
-	width: 30%;
+.DivWrapper {
+	//border: 1px solid green;
+	height: 50%;
+	width: 90%;
+	padding: 2%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	@media (max-width: 1200px) {
+		height: 30%;
+		width: auto;
+	}
+	@media (max-width: 1000px) {
+	}
+}
+
+.ImgDiv {
+	//border: 1px solid red;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 6%;
+	overflow: hidden;
+	height: 200px;
+
+	img {
+		overflow: hidden;
+		background-position: cover;
+		border-radius: 6px;
+	}
+}
+
+.PTags {
+	margin-bottom: 4%;
+}
+
+.PTagsDescription {
+	height: 80%;
+	//border: 1px solid black;
+}
+
+.Link {
+	text-decoration: none;
+	color: white;
+	font-weight: 700;
+}
+
+.DescripDiv {
+	overflow: scroll;
+	height: 300px;
+	//border: 1px solid hotpink;
 }
